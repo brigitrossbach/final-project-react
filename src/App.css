@@ -26,3 +26,8 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.image-preview {
+  max-height: 600px;
+  max-width: 600px;
+}
