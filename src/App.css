@@ -38,8 +38,8 @@
   /*position: relative;
   display: inline-block;
   margin: 0 40px 0 0;*/
-  max-height: 300px;
-  max-width: 300px;
+  height: 300px;
+  width: 300px;
 }
 
 /*.indiv-photo {
@@ -52,7 +52,8 @@
   text-align: justify;
   margin:5px;
   border:1px solid #ccc;
-  float: left;
+  float: center;
+  margin-left: 50px;
   width: 300px;
   /*display: inline-block;
   position: relative;*/
@@ -66,9 +67,13 @@
   position:relative;
   padding: 10px;
   text-align: left;
-  font-size: 12px;
+  font-size: 11px;
   font-family: "Helvetica", Times;
 
+}
+
+.description {
+  font-size:12px;
 }
 
 .logo {
@@ -79,6 +84,7 @@
 
 .meta {
   font-size: 11px;
+  float: right;
 }
 
 .nav-bar {
@@ -88,4 +94,9 @@
   background-color: #98a1a5;
   color: white;
   margin-bottom: 10px
+}
+
+.photo-detail img{
+  max-height: 700px;
+  max-width: 700px;
 }
