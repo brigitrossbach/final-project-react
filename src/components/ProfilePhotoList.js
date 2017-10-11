@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Photo from './Photo'
-import { Route } from 'react-router-dom'
 
 class ProfilePhotoList extends React.Component {
 
