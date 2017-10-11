@@ -32,17 +32,25 @@
   max-width: 600px;
 }
 
-.indiv-photo {
+.indiv-photo img{
+  position: relative;
   display: inline-block;
+  margin: 0 40px 0 0;
   max-height: 300px;
   max-width: 300px;
 }
 
+.indiv-photo {
+  display: inline-block;
+}
+
 .photo-list {
+  text-align: justify;
   margin:5px;
   border:1px solid #ccc;
   float: left;
   width: 300px;
+  display: inline-block;
 }
 
 .photo-list:hover {
@@ -52,4 +60,13 @@
 .caption {
   padding: 15px;
   text-align: left;
+  display: inline-flex;
+}
+
+.nav-bar {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  background-color: #98a1a5;
+  color: white;
+  margin-bottom: 10px
 }

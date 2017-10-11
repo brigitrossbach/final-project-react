@@ -33,6 +33,7 @@ class NewPhotoForm extends React.Component {
     })
     .then(resp => resp.json())
     .then(json => console.log(json))
+    .then(() => this.props.history.push('/me'))
   }
 
   render(){

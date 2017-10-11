@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Photo from './Photo'
+import { Route } from 'react-router-dom'
 
 class ProfilePhotoList extends React.Component {
 
@@ -15,10 +16,6 @@ class ProfilePhotoList extends React.Component {
   }
 }
 
-function mapStateToProps(state){
-  return{
-    photos: state.photos.list
-  }
-}
 
-export default connect(mapStateToProps)(ProfilePhotoList)
+
+export default connect()(ProfilePhotoList)

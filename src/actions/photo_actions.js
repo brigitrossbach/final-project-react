@@ -1,6 +1,6 @@
 export function fetchingPhotos(){
   return {
-    type: "FETCHING_BOOKS"
+    type: "FETCHING_PHOTOS"
   }
 }
 
