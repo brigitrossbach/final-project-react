@@ -8,7 +8,7 @@ class ProfilePhotoList extends React.Component {
     console.log(this.props)
     let allPhotos = this.props.photos.map((photo, index) => <Photo photo={photo} key={index} />)
     return(
-      <div className='photo-list'>
+      <div className='ui link cards photo-list'>
       {allPhotos}
       </div>
     )

@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  /*display: grid;
+  grid-template-columns: repeat(4, 1fr);*/
 }
 
 .App-logo {
@@ -33,24 +35,27 @@
 }
 
 .indiv-photo img{
-  position: relative;
+  /*position: relative;
   display: inline-block;
-  margin: 0 40px 0 0;
+  margin: 0 40px 0 0;*/
   max-height: 300px;
   max-width: 300px;
 }
 
-.indiv-photo {
-  display: inline-block;
-}
+/*.indiv-photo {
+  display: block;
+}*/
 
 .photo-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   text-align: justify;
   margin:5px;
   border:1px solid #ccc;
   float: left;
   width: 300px;
-  display: inline-block;
+  /*display: inline-block;
+  position: relative;*/
 }
 
 .photo-list:hover {
@@ -58,12 +63,26 @@
 }
 
 .caption {
-  padding: 15px;
+  position:relative;
+  padding: 10px;
   text-align: left;
-  display: inline-flex;
+  font-size: 12px;
+  font-family: "Helvetica", Times;
+
+}
+
+.logo {
+  height: 50px;
+  float: left;
+  width: 50px;
+}
+
+.meta {
+  font-size: 11px;
 }
 
 .nav-bar {
+  grid-row: 1;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   background-color: #98a1a5;
