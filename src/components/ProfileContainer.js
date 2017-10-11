@@ -19,7 +19,7 @@ class ProfileContainer extends React.Component{
 function mapDispatchToProps(dispatch){
   return {
     fetchPhotos: () => {
-      dispatch(fetchUserPhotos)
+      dispatch(fetchUserPhotos())
     }
   }
 }

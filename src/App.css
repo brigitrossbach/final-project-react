@@ -31,3 +31,25 @@
   max-height: 600px;
   max-width: 600px;
 }
+
+.indiv-photo {
+  display: inline-block;
+  max-height: 300px;
+  max-width: 300px;
+}
+
+.photo-list {
+  margin:5px;
+  border:1px solid #ccc;
+  float: left;
+  width: 300px;
+}
+
+.photo-list:hover {
+  border: 1px solid #777;
+}
+
+.caption {
+  padding: 15px;
+  text-align: left;
+}

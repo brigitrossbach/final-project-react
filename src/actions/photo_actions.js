@@ -1,14 +1,24 @@
-export function fetchUserPhotos(){
-  return(dispatch) => {
-    fetch('http://localhost:3000/users/1')
-    .then(resp => resp.json())
-    .then(json => dispatch(photosFetchSuccess(json)))
+export function fetchingPhotos(){
+  return {
+    type: "FETCHING_BOOKS"
   }
 }
 
+
 export function photosFetchSuccess(photos){
   return {
-    type: 'FETCH_SUCCESS',
+    type: 'FETCHED_PHOTOS',
     payload: photos
+  }
+}
+
+export function fetchUserPhotos(){
+  return function(dispatch){
+    dispatch(fetchingPhotos())
+    fetch('http://localhost:3000/photos')
+    .then(resp => resp.json())
+    .then(json => {
+      dispatch(photosFetchSuccess(json))
+    })
   }
 }

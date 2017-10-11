@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
       <Route path='/photos/new' component={NewPhotoForm} />
-      <ProfileContainer />
+      <Route path='/me' component={ProfileContainer} />
       </div>
     );
   }
