@@ -1,34 +1,22 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { fetchAllPhotos } from '../actions/photo_actions'
+import ProfilePhotoList from './ProfilePhotoList'
 
 class AllPhotoContainer extends React.Component {
 
-  componentDidMount(){
-    this.props.fetchPhotos()
-  }
-
-
   render(){
+    if (this.props.photos) {
     return(
-      <p>All Photos</p>
+      <div>
+      <ProfilePhotoList photos={this.props.photos} />
+      </div>
+    )
+  } else {
+    return(
+      <div></div>
     )
   }
 }
-
-function mapStateToProps(state){
-  return {
-    photos: state.photos.list
-  }
-}
-
-function mapDispatchToProps(dispatch){
-  return {
-    fetchPhotos: () => {
-      dispatch(fetchAllPhotos())
-    }
-  }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllPhotoContainer)
+export default AllPhotoContainer

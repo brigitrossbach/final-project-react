@@ -9,40 +9,50 @@ import PhotoDetail from './PhotoDetail'
 class ProfileContainer extends React.Component{
 
   componentDidMount(){
-    console.log(this.props)
-    this.props.fetchPhotos()
+    console.log('mounting profile container', this.props)
   }
 
 render(){
+  console.log("rendering ProfileContainer", this.props);
+  if (this.props.photos){
+    console.log('inside render')
     return(
-      <div><Route exact path='/me/photos/:id' render={(props) => {
-        let photoId=parseInt(props.match.params.id, 10)
-        let givenPhoto=this.props.photos.filter(photo => photo.id === photoId)
-        return <PhotoDetail {...props} photo={givenPhoto} />
-      }}/>
-        <Route exact path='/me' render={(props) => <ProfilePhotoList photos={this.props.photos}/>} />
-        <Route exact path='/me/:tag' render={(props) => {
-          let urlTag=props.match.params.tag
-          let allPhotos=this.props.photos
-          let taggedPhotos=_.filter(allPhotos, {tags: [{tag: urlTag}] })
-        return <ProfilePhotoList photos={taggedPhotos} {...props} />}}/>
+      <div>
+
       </div>
+    )
+  } else {
+    return(
+      <div></div>
     )
   }
 }
-
-function mapDispatchToProps(dispatch){
-  return {
-    fetchPhotos: () => {
-      dispatch(fetchUserPhotos())
-    }
-  }
 }
 
-function mapStateToProps(state){
-  return{
-    photos: state.photos.list
-  }
-}
+// function mapDispatchToProps(dispatch){
+//   return {
+//     fetchPhotos: () => {
+//       dispatch(fetchUserPhotos())
+//     }
+//   }
+// }
+//
+// function mapStateToProps(state){
+//   return{
+//     photos: state.photos.userPhotos
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer)
+// <div><Route exact path='/photo/:id' render={(props) => {
+//   let photoId=parseInt(props.match.params.id, 10)
+//   let givenPhoto=this.props.photos.find(photo => photo.id === photoId)
+//   return <PhotoDetail {...props} photo={givenPhoto} />
+// }}/>
+//   <Route exact path='/me' render={(props) => <ProfilePhotoList photos={this.props.photos}/>} />
+//   <Route exact path='/me/:tag' render={(props) => {
+//     let urlTag=props.match.params.tag
+//     let allPhotos=this.props.photos
+//     let taggedPhotos=_.filter(allPhotos, {tags: [{tag: urlTag}] })
+//   return <ProfilePhotoList photos={taggedPhotos} {...props} />}}/>
+
+export default connect()(ProfileContainer)

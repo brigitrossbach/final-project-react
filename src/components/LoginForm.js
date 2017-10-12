@@ -19,8 +19,9 @@ class LoginForm extends React.Component{
       body: newBody
     })
     .then(resp => resp.json())
-    .then(json => {
-      localStorage.setItem('jwt', json.jwt)
+    .then(user => {
+      debugger
+      localStorage.setItem('jwt', user.jwt)
       this.setState({
         username: '',
         password:''

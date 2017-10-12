@@ -35,7 +35,10 @@ class NewPhotoForm extends React.Component {
     data.append('caption', this.state.caption)
     fetch('http://localhost:3000/photos', {
       method: 'POST',
-      body: data
+      body: data,
+      headers: {
+        'Authorization': localStorage.getItem('jwt')
+      }
     })
     .then(resp => resp.json())
     .then(json => console.log(json))

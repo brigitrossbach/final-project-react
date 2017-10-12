@@ -22,10 +22,14 @@ export function photosFetchSuccess(photos){
 export function fetchUserPhotos(){
   return function(dispatch){
     dispatch(fetchingPhotos())
-    fetch('http://localhost:3000/photos')
+    fetch('http://localhost:3000/users', {
+      headers: {
+        'Authorization': localStorage.getItem('jwt')
+      }
+    })
     .then(resp => resp.json())
     .then(json => {
-      dispatch(userPhotosFetchSuccess(json))
+      dispatch(userPhotosFetchSuccess(json.photos))
     })
   }
 }

@@ -9,8 +9,9 @@ import { BrowserRouter } from 'react-router-dom'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import photoReducer from './reducers/photo_reducer'
+import userReducer from './reducers/user_reducer'
 
-const rootReducer = combineReducers({photos: photoReducer})
+const rootReducer = combineReducers({photos: photoReducer, user: userReducer})
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>, document.getElementById('root'));

@@ -1,13 +1,25 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const PhotoDetail = (props) =>{
-  return(
+class PhotoDetail extends React.Component {
+  render(){
+    console.log('detail props',this.props)
+    if (this.props.photo){
+    return(
     <div className='photo-detail'>
-      <img alt={props.photo[0].id} src={props.photo[0].url}/>
+      <img alt={this.props.photo.id} src={this.props.photo.url}/>
       <br />
-      <h3>{props.photo[0].caption}</h3>
+      <p className='photo-username'>{this.props.photo.user.username}</p>
+      <h3>{this.props.photo.caption}</h3>
     </div>
   )
+} else {
+  return (
+  <div></div>
+      )
+    }
+  }
 }
 
-export default PhotoDetail
+
+export default connect()(PhotoDetail)
