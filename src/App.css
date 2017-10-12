@@ -55,6 +55,7 @@
   float: center;
   margin-left: 50px;
   width: 300px;
+  margin-top:30px;
   /*display: inline-block;
   position: relative;*/
 }
@@ -110,4 +111,15 @@
   font-size: 12px;
   text-align:left;
   margin-left: 335px;
+}
+
+.content {
+  font-size: 12px;
+  text-align: left;
+  margin-left: 5px;
+}
+
+.search-box {
+  float:right;
+  margin-right: 113px;
 }

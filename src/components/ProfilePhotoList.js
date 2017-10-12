@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import Photo from './Photo'
 
 class ProfilePhotoList extends React.Component {
@@ -21,4 +20,4 @@ class ProfilePhotoList extends React.Component {
 
 
 
-export default connect()(ProfilePhotoList)
+export default ProfilePhotoList

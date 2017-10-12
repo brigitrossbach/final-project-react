@@ -6,6 +6,7 @@ import NavBar from './components/NavBar'
 import NewUserForm from './components/NewUserForm'
 import LoginForm from './components/LoginForm'
 import PhotoContainer from './components/PhotoContainer'
+import Search from './components/Search'
 
 class App extends Component {
 
@@ -13,6 +14,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
+        <Search />
         <Route path='/' render={(props) => <PhotoContainer {...props} />} />
         <Route path='/users/new' render={(props) => <NewUserForm {...props}/>}/>
         <Route path='/photos/new' render={(props) => <NewPhotoForm {...props}/> } />
