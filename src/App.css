@@ -65,9 +65,8 @@
 
 .caption {
   position:relative;
-  padding: 10px;
-  text-align: left;
-  font-size: 11px;
+  margin-left:5px;
+  font-size: 12px;
   font-family: "Helvetica", Times;
 
 }
@@ -99,4 +98,16 @@
 .photo-detail img{
   max-height: 700px;
   max-width: 700px;
+}
+
+.detail-caption {
+  font-size: 14px;
+  text-align:left;
+  margin-left: 335px;
+}
+
+.photo-username {
+  font-size: 12px;
+  text-align:left;
+  margin-left: 335px;
 }

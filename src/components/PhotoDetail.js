@@ -10,7 +10,7 @@ class PhotoDetail extends React.Component {
       <img alt={this.props.photo.id} src={this.props.photo.url}/>
       <br />
       <p className='photo-username'>{this.props.photo.user.username}</p>
-      <h3>{this.props.photo.caption}</h3>
+      <h3 className='detail-caption'>{this.props.photo.caption}</h3>
     </div>
   )
 } else {
