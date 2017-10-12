@@ -14,7 +14,6 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <Search />
         <Route path='/' render={(props) => <PhotoContainer {...props} />} />
         <Route path='/users/new' render={(props) => <NewUserForm {...props}/>}/>
         <Route path='/photos/new' render={(props) => <NewPhotoForm {...props}/> } />

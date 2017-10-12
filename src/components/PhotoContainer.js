@@ -6,11 +6,13 @@ import ProfilePhotoList from './ProfilePhotoList'
 import PhotoDetail from './PhotoDetail'
 import _ from 'lodash'
 import UserProfile from './UserProfile'
+import { fetchCurrentUser } from '../actions/user_actions'
 
 class PhotoContainer extends React.Component {
   componentDidMount(){
     this.props.fetchUserPhotos()
     this.props.fetchPhotos()
+    this.props.fetchCurrentUser()
   }
   render(){
     if (this.props.allPhotos && this.props.userPhotos){
@@ -28,7 +30,7 @@ class PhotoContainer extends React.Component {
             let givenPhoto=this.props.allPhotos.find(photo => photo.id === photoId)
             return <PhotoDetail {...props} photo={givenPhoto} />
           }}/>
-          <Route exact path='/users/:username' render={(props) => {
+          <Route exact path='/user/:username' render={(props) => {
             let username=props.match.params.username
             let userProfilePhotos=this.props.allPhotos.filter(photo =>{
               return photo.user.username == username
@@ -60,6 +62,9 @@ function mapDispatchToProps(dispatch){
     },
     fetchPhotos: () => {
       dispatch(fetchAllPhotos())
+    },
+    fetchCurrentUser: () => {
+      dispatch(fetchCurrentUser())
     }
   }
 }
