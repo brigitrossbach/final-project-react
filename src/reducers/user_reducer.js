@@ -2,7 +2,7 @@ function userReducer(state= { currentUser:null, homepagePhotos: []}, action){
   switch(action.type){
     case 'USER_FETCHED':
     let flatPhotos
-      if (action.payload.homepage_photos.length > 0){
+      if (action.payload){
         flatPhotos = action.payload.homepage_photos
       } else {
         flatPhotos=[]

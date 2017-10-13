@@ -19,17 +19,16 @@ componentWillReceiveProps(nextProps){
 }
 
   handleFollow = (e) => {
-    let followedUser = this.props.photos[0].user
+    let followedUser = this.state.user
     this.props.followUser(followedUser)
   }
 
   handleUnfollow = () => {
-    let followedUser = this.props.photos[0].user
+    let followedUser = this.state.user
     this.props.unfollowUser(followedUser)
   }
 
   render(){
-    console.log(this.props)
     if (this.state.user && this.props.currentUser){
       let user = this.state.user
       let photoList= <ProfilePhotoList photos={this.props.photos} />

@@ -11,7 +11,10 @@ class PhotoDetail extends React.Component {
       <img alt={this.props.photo.id} src={this.props.photo.url}/>
       <br />
       <p className='photo-username'><Link to={'/user/' + this.props.photo.username}>{this.props.photo.username}</Link></p>
+      <p className='like-count'>Likes</p>
+      <br />
       <h3 className='detail-caption'>{this.props.photo.caption}</h3>
+      <textarea className='comment-input' placeholder='Add a Comment...' />
     </div>
   )
 } else {
