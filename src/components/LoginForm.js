@@ -4,7 +4,8 @@ import React from 'react'
 class LoginForm extends React.Component{
   state={
     username: '',
-    password:''
+    password:'',
+    currentError: ''
   }
 
   handleSubmit = (event) => {
@@ -19,16 +20,26 @@ class LoginForm extends React.Component{
       body: newBody
     })
     .then(resp => resp.json())
-    .then(user => {
-      debugger
-      localStorage.setItem('jwt', user.jwt)
+    .then(userJSON => {
+    if (userJSON.user) {
+      localStorage.setItem("jwt", userJSON.jwt)
       this.setState({
         username: '',
-        password:''
+        password: ''
       })
-    })
-    .then(() => this.props.history.push('/me'))
-  }
+    } else {
+      this.setState({
+        currentError: 'User not found'
+      })
+    }
+  })
+  .then(() => {
+    if (localStorage.getItem('jwt')) {
+      this.props.history.push('/me')
+    }
+  })
+
+}
 
   handleUsernameChange = (event) => {
     this.setState({

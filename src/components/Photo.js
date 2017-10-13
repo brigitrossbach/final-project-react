@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const Photo = (props) => {
-  console.log(props)
   let allTags = props.photo.tags.map((tag, index) => <p key={index}><Link to={'/photos/' + tag.tag}>#{tag.tag}</Link></p>)
     return(
       <div className='ui card'>
