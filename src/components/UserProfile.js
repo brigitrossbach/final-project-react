@@ -3,9 +3,20 @@ import ProfilePhotoList from './ProfilePhotoList'
 import { connect } from 'react-redux'
 import { followUser, unfollowUser } from '../actions/user_actions'
 import { Card, Header } from 'semantic-ui-react'
+import { fetchUser } from '../services/user_services'
 
 class UserProfile extends React.Component{
 
+  state={
+    user: null
+  }
+
+componentWillReceiveProps(nextProps){
+    if (nextProps.photos.length > 0){
+      fetchUser(nextProps.photos[0].user_id)
+      .then(user => this.setState({user: user}))
+    }
+}
 
   handleFollow = (e) => {
     let followedUser = this.props.photos[0].user
@@ -19,17 +30,17 @@ class UserProfile extends React.Component{
 
   render(){
     console.log(this.props)
-    if (this.props.photos.length > 0 && this.props.currentUser){
-      let user = this.props.photos[0].user
+    if (this.state.user && this.props.currentUser){
+      let user = this.state.user
       let photoList= <ProfilePhotoList photos={this.props.photos} />
       let isFollowing
-      // this.props.currentUser.all_following.forEach(following =>{
-      //   if (following.id === user.id){
-      //     isFollowing=true
-      //   } else {
-      //     isFollowing=false
-      //   }
-      // })
+      this.props.currentUser.all_following.forEach(following =>{
+        if (following.id === user.id){
+          isFollowing=true
+        } else {
+          isFollowing=false
+        }
+      })
       let ownProfile
       if (this.props.currentUser.id === user.id){
         ownProfile= true

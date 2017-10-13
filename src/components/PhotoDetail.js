@@ -10,7 +10,7 @@ class PhotoDetail extends React.Component {
     <div className='photo-detail'>
       <img alt={this.props.photo.id} src={this.props.photo.url}/>
       <br />
-      <p className='photo-username'><Link to={'/user/' + this.props.photo.user.username}>{this.props.photo.user.username}</Link></p>
+      <p className='photo-username'><Link to={'/user/' + this.props.photo.username}>{this.props.photo.username}</Link></p>
       <h3 className='detail-caption'>{this.props.photo.caption}</h3>
     </div>
   )

@@ -40,11 +40,8 @@
   margin: 0 40px 0 0;*/
   height: 300px;
   width: 300px;
+  padding:5px;
 }
-
-/*.indiv-photo {
-  display: block;
-}*/
 
 .photo-list {
   display: grid;
@@ -52,15 +49,15 @@
   text-align: justify;
   margin:5px;
   float: center;
-  margin-left: 50px;
+  margin-left:45px;
   width: 300px;
   margin-top:30px;
   /*display: inline-block;
   position: relative;*/
 }
 
-.photo-list:hover {
-  border: 1px solid #777;
+.indiv-photo:hover {
+  border: 1px solid white;
 }
 
 .caption {
@@ -118,7 +115,7 @@
   font-family: "Helvetica Header";
   background-color: #dae1ed;
   margin-left: 1px;
-  font: bold 11px Arial;
+  font: bold 14px Arial;
   text-decoration: none;
   background-color: #EEEEEE;
   color: #333333;

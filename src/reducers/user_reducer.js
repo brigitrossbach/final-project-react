@@ -2,12 +2,12 @@ function userReducer(state= { currentUser:null, homepagePhotos: []}, action){
   switch(action.type){
     case 'USER_FETCHED':
     let flatPhotos
-      if (action.payload.homepage_photos){
-        flatPhotos = action.payload.homepage_photos.reduce((a,b) => a.concat(b))
+      if (action.payload.homepage_photos.length > 0){
+        flatPhotos = action.payload.homepage_photos
       } else {
         flatPhotos=[]
       }
-      return Object.assign({}, state, {currentUser: action.payload.user, homepagePhotos: flatPhotos})
+      return Object.assign({}, state, {currentUser: action.payload, homepagePhotos: flatPhotos})
     default:
       return state
   }

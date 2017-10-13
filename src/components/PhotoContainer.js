@@ -38,7 +38,7 @@ class PhotoContainer extends React.Component {
           <Route exact path='/user/:username' render={(props) => {
             let username=props.match.params.username
             let userProfilePhotos=this.props.allPhotos.filter(photo =>{
-              return photo.user.username == username
+              return photo.username == username
             })
             return <UserProfile {...props} currentUser={this.props.currentUser} photos={userProfilePhotos} />
           }} />
