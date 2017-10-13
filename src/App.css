@@ -87,12 +87,46 @@
 }
 
 .nav-bar {
-  grid-row: 1;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   background-color: #98a1a5;
   color: white;
   margin-bottom: 10px
+}
+
+.home-button {
+  grid-column:2;
+}
+
+.profile-button {
+  grid-column: 10;
+}
+
+.explore-button {
+  grid-column: 9;
+}
+
+.upload-button {
+  grid-column: 8;
+}
+
+.nav-bar-button {
+  display: flex;
+  border: 1px solid #bbb;
+  justify-content: center;
+  align-items: center;
+  font-family: "Helvetica Header";
+  background-color: #dae1ed;
+  margin-left: 1px;
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
 }
 
 .photo-detail img{
