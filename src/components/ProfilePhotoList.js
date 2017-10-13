@@ -17,7 +17,7 @@ class ProfilePhotoList extends React.Component {
       )
     } else {
     return(
-      <div></div>
+      <div>Follow a user to see their photos.</div>
     )
   }
   }

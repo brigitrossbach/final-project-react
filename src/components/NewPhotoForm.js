@@ -54,7 +54,7 @@ class NewPhotoForm extends React.Component {
 
     return(
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form className='form' onSubmit={this.handleSubmit}>
           <input type='file' accept='image/*' onChange={this.handleChange} required/><br />
           <input type='text' onChange={this.handleCaptionChange} value={this.state.caption} placeholder="Caption" required/><br />
           <button type="submit" onClick={this.handleSubmit}>Upload Image</button>
