@@ -6,6 +6,7 @@ import { Card, Header } from 'semantic-ui-react'
 
 class UserProfile extends React.Component{
 
+
   handleFollow = (e) => {
     let followedUser = this.props.photos[0].user
     this.props.followUser(followedUser)
@@ -17,18 +18,18 @@ class UserProfile extends React.Component{
   }
 
   render(){
-
-    if (this.props.photos.length > 0){
+    console.log(this.props)
+    if (this.props.photos.length > 0 && this.props.currentUser){
       let user = this.props.photos[0].user
       let photoList= <ProfilePhotoList photos={this.props.photos} />
       let isFollowing
-      this.props.currentUser.all_following.forEach(following =>{
-        if (following.id === user.id){
-          isFollowing=true
-        } else {
-          isFollowing=false
-        }
-      })
+      // this.props.currentUser.all_following.forEach(following =>{
+      //   if (following.id === user.id){
+      //     isFollowing=true
+      //   } else {
+      //     isFollowing=false
+      //   }
+      // })
       let ownProfile
       if (this.props.currentUser.id === user.id){
         ownProfile= true
@@ -83,10 +84,10 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-function mapStateToProps(state){
-  return{
-    currentUser: state.users.currentUser
-  }
-}
+// function mapStateToProps(state){
+//   return{
+//     currentUser: state.users.currentUser
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
+export default connect(null, mapDispatchToProps)(UserProfile)

@@ -8,6 +8,7 @@ const NavBar = () => {
       <span className='ui button'><NavLink to='/'>PhotoVision</NavLink></span>
       <button className='ui button'><NavLink className='ui button' to='/me'>Profile</NavLink></button>
       <NavLink className='ui button' to='/photos/new'>Upload</NavLink>
+      <NavLink to='/explore'>Explore</NavLink>
     </div>
   )
 }

@@ -15,10 +15,12 @@ class PhotoContainer extends React.Component {
     this.props.fetchCurrentUser()
   }
   render(){
+    console.log('photocontainer',this.props)
     if (this.props.allPhotos && this.props.userPhotos){
+      console.log('rendering')
       return(
         <div>
-          <Route exact path = '/' render={(props) => <ProfilePhotoList photos={this.props.allPhotos} {...props}/>}/>
+          <Route exact path = '/explore' render={(props) => <ProfilePhotoList photos={this.props.allPhotos} {...props}/>}/>
           <Route exact path='/me' render={(props) => <ProfilePhotoList photos={this.props.userPhotos} {...props} />}/>
           <Route exact path='/photos/:tag' render={(props) => {
             let urlTag=props.match.params.tag
@@ -30,12 +32,15 @@ class PhotoContainer extends React.Component {
             let givenPhoto=this.props.allPhotos.find(photo => photo.id === photoId)
             return <PhotoDetail {...props} photo={givenPhoto} />
           }}/>
+          <Route exact path='/' render={(props) => {
+            return <ProfilePhotoList photos={this.props.homepagePhotos} />
+          }} />
           <Route exact path='/user/:username' render={(props) => {
             let username=props.match.params.username
             let userProfilePhotos=this.props.allPhotos.filter(photo =>{
               return photo.user.username == username
             })
-            return <UserProfile {...props} photos={userProfilePhotos} />
+            return <UserProfile {...props} currentUser={this.props.currentUser} photos={userProfilePhotos} />
           }} />
         </div>
       )
@@ -51,7 +56,9 @@ class PhotoContainer extends React.Component {
 function mapStateToProps(state){
   return{
     userPhotos: state.photos.userPhotos,
-    allPhotos: state.photos.list
+    allPhotos: state.photos.list,
+    homepagePhotos: state.users.homepagePhotos,
+    currentUser: state.users.currentUser
   }
 }
 
