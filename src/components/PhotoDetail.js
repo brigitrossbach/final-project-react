@@ -32,15 +32,11 @@ class PhotoDetail extends React.Component {
     })
   }
 
-  componentWillReceiveProps(nextProps){
-    console.log('will receive props', nextProps)
-  }
-
   render(){
     if (this.props.photo){
       let allComments
       if (this.props.photo.comments){
-        allComments=this.props.photo.comments.map(comment => <p className='each-comment'>{comment.comment}   --<Link to={'/user/' + comment.username}>{comment.username}</Link></p>)
+        allComments=this.props.photo.comments.map((comment, index) => <p key={index} className='each-comment'>{comment.comment}   --<Link to={'/user/' + comment.username}>{comment.username}</Link></p>)
       } else {
         allComments=<p></p>
       }

@@ -8,6 +8,7 @@ import LoginForm from './components/LoginForm'
 import PhotoContainer from './components/PhotoContainer'
 import Search from './components/Search'
 import Authorize from './components/Authorize'
+import BoardContainer from './components/BoardContainer'
 
 class App extends Component {
 
@@ -20,6 +21,7 @@ class App extends Component {
         <NavBar />
         <Route path='/' render={(props) => <AuthPhotoContainer {...props} />} />
         <Route path='/users/new' render={(props) => <NewUserForm {...props}/>}/>
+        <Route path='/boards' render={(props) => <BoardContainer {...props}/>}/>
         <Route path='/photo/new' render={(props) => <AuthNewPhotoForm {...props} /> } />
         <Route exact path='/login' render={(props) => <LoginForm {...props}/>}/>
       </div>
