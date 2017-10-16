@@ -15,9 +15,7 @@ class PhotoContainer extends React.Component {
     this.props.fetchCurrentUser()
   }
   render(){
-    console.log('photocontainer',this.props)
     if (this.props.allPhotos && this.props.userPhotos){
-      console.log('rendering')
       return(
         <div>
           <Route exact path = '/explore' render={(props) => <ProfilePhotoList photos={this.props.allPhotos} {...props}/>}/>

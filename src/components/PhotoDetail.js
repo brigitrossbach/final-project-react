@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+
 class PhotoDetail extends React.Component {
 
   state={
@@ -17,7 +18,6 @@ class PhotoDetail extends React.Component {
     // let photoId=this.props.photo.id
     // let comment = this.state.newComment
     let newBody=JSON.stringify({comment: this.state.newComment, photoId: this.props.photo.id})
-    console.log(newBody)
     fetch('http://localhost:3000/comments', {
       method: 'post',
       headers: {
@@ -32,12 +32,15 @@ class PhotoDetail extends React.Component {
     })
   }
 
+  componentWillReceiveProps(nextProps){
+    console.log('will receive props', nextProps)
+  }
 
   render(){
     if (this.props.photo){
       let allComments
       if (this.props.photo.comments){
-        allComments=this.props.photo.comments.map(comment => <p className='each-comment'>{comment.comment}   --{comment.username}</p>)
+        allComments=this.props.photo.comments.map(comment => <p className='each-comment'>{comment.comment}   --<Link to={'/user/' + comment.username}>{comment.username}</Link></p>)
       } else {
         allComments=<p></p>
       }
@@ -46,7 +49,7 @@ class PhotoDetail extends React.Component {
       <img alt={this.props.photo.id} src={this.props.photo.url}/>
       <br />
       <p className='photo-username'><Link to={'/user/' + this.props.photo.username}>{this.props.photo.username}</Link></p>
-      <p className='like-count'>Likes</p>
+      <p className='like-count'>{this.props.photo.likes_count} Likes</p>
       <br />
       <h3 className='detail-caption'>{this.props.photo.caption}</h3>
       <form onSubmit={this.handleSubmit} >

@@ -147,6 +147,7 @@
   font-size: 14px;
   text-align:left;
   margin-left: 335px;
+  margin-top:20px;
 }
 
 .photo-username {
@@ -182,6 +183,7 @@
 
 .comment-input {
   float:left;
+  /*margin-top: 10px;*/
   margin-left:335px;
   width:300px;
 }
@@ -209,4 +211,16 @@
   float: left;
   margin-left:333px;
   font-size:14px;
+}
+
+.user-profile-card {
+  display: inline;
+  float:left;
+  font-size: 12px;
+}
+
+.photo-list-likes-count {
+  font-size:11px;
+  margin-left:5px;
+  margin-top: 5px;
 }

@@ -2,7 +2,6 @@ import React from 'react'
 import ProfilePhotoList from './ProfilePhotoList'
 import { connect } from 'react-redux'
 import { followUser, unfollowUser } from '../actions/user_actions'
-import { Card, Header } from 'semantic-ui-react'
 import { fetchUser } from '../services/user_services'
 
 class UserProfile extends React.Component{
@@ -30,16 +29,18 @@ componentWillReceiveProps(nextProps){
 
   render(){
     if (this.state.user && this.props.currentUser){
+      console.log(this.state.user)
+      console.log(this.props.currentUser)
       let user = this.state.user
       let photoList= <ProfilePhotoList photos={this.props.photos} />
       let isFollowing
-      this.props.currentUser.all_following.forEach(following =>{
-        if (following.id === user.id){
-          isFollowing=true
-        } else {
-          isFollowing=false
-        }
-      })
+      for (let i=0; i<this.props.currentUser.all_following.length; i++) {
+          if (this.props.currentUser.all_following[i].id === user.id) {
+              isFollowing = true
+              break
+          } else {
+            isFollowing=false
+          }}
       let ownProfile
       if (this.props.currentUser.id === user.id){
         ownProfile= true
@@ -56,22 +57,20 @@ componentWillReceiveProps(nextProps){
         }
       }
       return(
-        <div>
-        <Card>
-        <Card.Content>
-          <Header>{user.firstName} {user.lastName}</Header>
-        <Card.Content extra>
+        <div className='user-profile-card'>
+        <div className='user-profile-username'>{user.username}</div>
+          <div className='user-name'>{user.first_name} {user.last_name}</div>
+        <div className='follower-info'>
           <a>
               {user.followers.length} Followers
-          </a><br />
+              <br />
+          </a>
           <a>
             {user.all_following.length} Following
           </a>
           <br />
           {buttonFunction()}
-        </Card.Content>
-        </Card.Content>
-        </Card>
+        </div>
         {photoList}
         </div>
       )
