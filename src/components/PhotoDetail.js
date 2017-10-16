@@ -3,9 +3,44 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 class PhotoDetail extends React.Component {
+
+  state={
+    newComment: ''
+  }
+
+  handleChange=(e)=>{
+    this.setState({newComment: e.target.value})
+  }
+
+  handleSubmit=(event)=>{
+    event.preventDefault()
+    // let photoId=this.props.photo.id
+    // let comment = this.state.newComment
+    let newBody=JSON.stringify({comment: this.state.newComment, photoId: this.props.photo.id})
+    console.log(newBody)
+    fetch('http://localhost:3000/comments', {
+      method: 'post',
+      headers: {
+        'Authorization':localStorage.getItem('jwt'),
+        'Accept':'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: newBody
+    })
+    .then(resp => resp.json())
+    .then(json => { this.setState({newComment:''})
+    })
+  }
+
+
   render(){
-    console.log('detail props',this.props)
     if (this.props.photo){
+      let allComments
+      if (this.props.photo.comments){
+        allComments=this.props.photo.comments.map(comment => <p className='each-comment'>{comment.comment}   --{comment.username}</p>)
+      } else {
+        allComments=<p></p>
+      }
     return(
     <div className='photo-detail'>
       <img alt={this.props.photo.id} src={this.props.photo.url}/>
@@ -14,7 +49,15 @@ class PhotoDetail extends React.Component {
       <p className='like-count'>Likes</p>
       <br />
       <h3 className='detail-caption'>{this.props.photo.caption}</h3>
-      <textarea className='comment-input' placeholder='Add a Comment...' />
+      <form onSubmit={this.handleSubmit} >
+      <textarea className='comment-input' value={this.state.newComment} onChange={this.handleChange} placeholder='Add a Comment...' />
+      <br />
+      <br />
+      <button className='add-comment-button' value='submit' type='submit'>Add Comment</button>
+      </form>
+      <br />
+      <p className='comment-header'>Comments</p><br /> <br />
+      <div className='photo-comments'>{allComments}</div>
     </div>
   )
 } else {

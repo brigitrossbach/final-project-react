@@ -20,7 +20,7 @@ class App extends Component {
         <NavBar />
         <Route path='/' render={(props) => <AuthPhotoContainer {...props} />} />
         <Route path='/users/new' render={(props) => <NewUserForm {...props}/>}/>
-        <Route path='/photos/new' render={(props) => <AuthNewPhotoForm {...props}/> } />
+        <Route path='/photo/new' render={(props) => <AuthNewPhotoForm {...props} /> } />
         <Route exact path='/login' render={(props) => <LoginForm {...props}/>}/>
       </div>
     );

@@ -14,7 +14,7 @@ const NavBar = () => {
   let logoutButton
   let signUpButton
   if (localStorage.getItem('jwt')){
-    uploadButton = <NavLink className='nav-bar-button upload-button' to='/photos/new'>Upload</NavLink>
+    uploadButton = <NavLink className='nav-bar-button upload-button' to='/photo/new'>Upload</NavLink>
     exploreButton = <NavLink to='/explore' className='nav-bar-button explore-button'>Explore</NavLink>
     profileButton = <NavLink className='nav-bar-button profile-button' to='/me'>Profile</NavLink>
     loginButton = null
