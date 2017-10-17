@@ -6,7 +6,7 @@ function Authorize(GivenComponent, props) {
     render(){
       if(localStorage.getItem('jwt') && this.props.location.pathname==='/login'){
         return <Redirect to='/me' />
-      } else if (!localStorage.getItem('jwt') && this.props.location.pathname !=='/login'){
+      } else if (!localStorage.getItem('jwt') && this.props.location.pathname !=='/login' && this.props.location.pathname !=='/users/new'){
         return <Redirect to='/login' />
       } else {
         return <GivenComponent {...this.props}{...props} />

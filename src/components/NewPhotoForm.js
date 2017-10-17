@@ -5,7 +5,8 @@ class NewPhotoForm extends React.Component {
   state={
     file: '',
     imagePreviewUrl: '',
-    caption: ''
+    caption: '',
+    public: true
   }
 
   handleChange = (event) => {
@@ -27,12 +28,17 @@ class NewPhotoForm extends React.Component {
      this.setState({caption: event.target.value})
    }
 
+   handleClick = (event) => {
+     this.setState({public: !this.state.public})
+   }
+
   handleSubmit= (event) => {
     event.preventDefault()
     let form = event.target.parentElement
     let data=new FormData(form)
     data.append('image', this.state.imagePreviewUrl)
     data.append('caption', this.state.caption)
+    data.append('public', this.state.public)
     fetch('http://localhost:3000/photos', {
       method: 'POST',
       body: data,
@@ -57,6 +63,7 @@ class NewPhotoForm extends React.Component {
         <form className='form' onSubmit={this.handleSubmit}>
           <input type='file' accept='image/*' onChange={this.handleChange} required/><br />
           <input type='text' onChange={this.handleCaptionChange} value={this.state.caption} placeholder="Caption" required/><br />
+          <label>Private?</label><input type='checkbox' value='false' onClick={this.handleClick}/> <br />
           <button type="submit" onClick={this.handleSubmit}>Upload Image</button>
         </form>
         {$imagePreview}

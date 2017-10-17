@@ -49,14 +49,14 @@
   text-align: justify;
   margin:5px;
   float: center;
-  margin-left:45px;
+  margin-left:48px;
   width: 300px;
   margin-top:30px;
   /*display: inline-block;
   position: relative;*/
 }
 
-.indiv-photo:hover {
+.indiv-photo:hover img {
   border: 1px solid white;
 }
 
@@ -202,8 +202,9 @@
 
 .photo-comments {
   float:left;
-  margin-right: -100px;
+  margin-right: -200px;
   font-size: 13px;
+  margin-top: 10px;
 }
 
 .comment-header {
@@ -227,5 +228,10 @@
 
 .like-icon {
   height:12px;
+  width: 12px;
+}
+
+.trash-can-icon {
+  height: 12px;
   width: 12px;
 }

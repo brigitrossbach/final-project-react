@@ -29,13 +29,25 @@ class PhotoDetail extends React.Component {
     this.props.unlikePhoto(like)
   }
 
+  handleDeleteComment = () => {
+    console.log('delete')
+  }
+
   render(){
     let liked
     let likeIcon
     if (this.props.photo){
       let allComments
-      if (this.props.photo.comments){
-        allComments=this.props.photo.comments.map((comment, index) => <p key={index} className='each-comment'>{comment.comment}   --<Link to={'/user/' + comment.username}>{comment.username}</Link></p>)
+      if (this.props.photo.comments && this.props.currentUser){
+        allComments=this.props.photo.comments.map((comment, index) => {
+          let trashCan
+          if (comment.username === this.props.currentUser.username){
+            trashCan = <img alt='trash' src={require('../images/trash-can-icon.png')} onClick={this.handleDeleteComment} className='trash-can-icon' />
+          } else {
+            trashCan = null
+          }
+          return <p key={index} className='each-comment'>{trashCan} {comment.comment}   --<Link to={'/user/' + comment.username}>{comment.username}</Link></p>
+        })
       } else {
         allComments=<p></p>
       }
@@ -68,7 +80,7 @@ class PhotoDetail extends React.Component {
       <button className='add-comment-button' value='submit' type='submit'>Add Comment</button>
       </form>
       <br />
-      <p className='comment-header'>Comments</p><br /> <br />
+      <p className='comment-header'>Comments</p><br />
       <div className='photo-comments'>{allComments}</div>
     </div>
   )

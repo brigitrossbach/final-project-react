@@ -15,7 +15,7 @@ class BoardContainer extends React.Component {
 
   handleOptionChange = (event) => {
     let board = this.props.currentUser.boards.find(board => board.id == event.target.value)
-    this.setState({selectedBoard: board}, console.log(this.state))
+    this.setState({selectedBoard: board})
   }
 
   render(){
