@@ -13,7 +13,7 @@ class Board extends React.Component {
 
     return(
       <div>
-      <PhotoGrid className='photo-grid' columns={3} photos={photoSet} />
+      <PhotoGrid className='photo-grid' columns={4} photos={photoSet} />
       </div>
     )
   }

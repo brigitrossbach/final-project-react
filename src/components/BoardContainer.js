@@ -2,11 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchCurrentUser } from '../actions/user_actions'
 import Board from './Board'
+import { addBoard } from '../actions/board_actions'
 
 class BoardContainer extends React.Component {
 
   state={
-    selectedBoard: null
+    selectedBoard: null,
+    newBoard: ''
   }
 
   componentDidMount(){
@@ -16,6 +18,17 @@ class BoardContainer extends React.Component {
   handleOptionChange = (event) => {
     let board = this.props.currentUser.boards.find(board => board.id == event.target.value)
     this.setState({selectedBoard: board})
+  }
+
+  handleChange = (event) => {
+    this.setState({newBoard: event.target.value})
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    let body=JSON.stringify({name: this.state.newBoard, user_id: this.props.currentUser.id})
+    this.props.addBoard(body)
+    this.setState({newBoard:''})
   }
 
   render(){
@@ -35,8 +48,8 @@ class BoardContainer extends React.Component {
       }
       return(
         <div>
-          <form>
-            <input type='text' placeholder='Create a New Board' />
+          <form onSubmit={this.handleSubmit}>
+            <input type='text' onChange={this.handleChange} placeholder='Create a New Board' />
             <button type='submit' value='submit'>Add Board</button>
           </form>
           <div className='board-selector'>
@@ -64,6 +77,9 @@ function mapDispatchToProps(dispatch){
   return {
     fetchCurrentUser: () => {
       dispatch(fetchCurrentUser())
+    },
+    addBoard: (body) => {
+      dispatch(addBoard(body))
     }
   }
 }

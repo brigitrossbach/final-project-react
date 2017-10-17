@@ -104,7 +104,7 @@
 }
 
 .upload-button {
-  grid-column: 17;
+  grid-column: 16;
 }
 
 .logout-button {
@@ -117,6 +117,10 @@
 
 .signup-button {
   grid-column: 18/20;
+}
+
+.boards-button {
+  grid-column: 17;
 }
 
 .nav-bar-button {

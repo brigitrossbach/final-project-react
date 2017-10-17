@@ -13,12 +13,14 @@ const NavBar = () => {
   let loginButton
   let logoutButton
   let signUpButton
+  let boardsButton
   if (localStorage.getItem('jwt')){
     uploadButton = <NavLink className='nav-bar-button upload-button' to='/photo/new'>Upload</NavLink>
     exploreButton = <NavLink to='/explore' className='nav-bar-button explore-button'>Explore</NavLink>
     profileButton = <NavLink className='nav-bar-button profile-button' to='/me'>Profile</NavLink>
     loginButton = null
     signUpButton = null
+    boardsButton=<NavLink className='nav-bar-button boards-button' to='/boards'>Boards</NavLink>
     logoutButton = <NavLink className='nav-bar-button logout-button' to='/login' onClick={handleLogout}>Logout</NavLink>
   } else {
     loginButton = <NavLink className='nav-bar-button login-button' to='/me'>Log In</NavLink>
@@ -27,11 +29,13 @@ const NavBar = () => {
     exploreButton=null
     profileButton=null
     logoutButton=null
+    boardsButton=null
   }
   return(
     <div className='nav-bar'>
       <NavLink to='/'><img className='logo' alt='logo' src={require('../images/cloud-camera-logo.jpg')} /></NavLink>
       {uploadButton}
+      {boardsButton}
       {exploreButton}
       {profileButton}
       {signUpButton}
