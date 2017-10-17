@@ -76,3 +76,19 @@ export function unlikePhoto(like){
     .then(photos => dispatch(photosFetchSuccess(photos)))
   }
 }
+
+export function addComment(body){
+  return function(dispatch){
+    fetch('http://localhost:3000/comments', {
+      method: 'post',
+      headers: {
+        'Authorization':localStorage.getItem('jwt'),
+        'Accept':'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: body
+    })
+    .then(resp => resp.json())
+    .then(photos => dispatch(photosFetchSuccess(photos)))
+  }
+}

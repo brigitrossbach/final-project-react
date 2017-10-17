@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { likePhoto, unlikePhoto } from '../actions/photo_actions'
+import { likePhoto, unlikePhoto, addComment } from '../actions/photo_actions'
 
 class PhotoDetail extends React.Component {
 
@@ -15,21 +15,9 @@ class PhotoDetail extends React.Component {
 
   handleSubmit=(event)=>{
     event.preventDefault()
-    // let photoId=this.props.photo.id
-    // let comment = this.state.newComment
     let newBody=JSON.stringify({comment: this.state.newComment, photoId: this.props.photo.id})
-    fetch('http://localhost:3000/comments', {
-      method: 'post',
-      headers: {
-        'Authorization':localStorage.getItem('jwt'),
-        'Accept':'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: newBody
-    })
-    .then(resp => resp.json())
-    .then(json => { this.setState({newComment:''})
-    })
+    this.setState({newComment: ''})
+    this.props.addComment(newBody)
   }
 
   handleLikeClick = () => {
@@ -99,6 +87,9 @@ function mapDispatchToProps(dispatch){
     },
     unlikePhoto: (like) => {
       dispatch(unlikePhoto(like))
+    },
+    addComment: (body) => {
+      dispatch(addComment(body))
     }
   }
 }
