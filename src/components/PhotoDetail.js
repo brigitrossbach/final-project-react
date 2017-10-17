@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-
+import { likePhoto, unlikePhoto } from '../actions/photo_actions'
 
 class PhotoDetail extends React.Component {
 
@@ -32,7 +32,18 @@ class PhotoDetail extends React.Component {
     })
   }
 
+  handleLikeClick = () => {
+    this.props.likePhoto(this.props.photo)
+  }
+
+  handleUnlikeClick = () => {
+    let like= this.props.photo.likes.find(like => like.user_id === this.props.currentUser.id)
+    this.props.unlikePhoto(like)
+  }
+
   render(){
+    let liked
+    let likeIcon
     if (this.props.photo){
       let allComments
       if (this.props.photo.comments){
@@ -40,12 +51,26 @@ class PhotoDetail extends React.Component {
       } else {
         allComments=<p></p>
       }
+      if (this.props.photo.likes && this.props.currentUser){
+        for (let i=0; i<this.props.photo.likes.length; i++) {
+            if (this.props.currentUser.id == this.props.photo.likes[i].user_id) {
+                liked = true
+                break
+            } else {
+              liked=false
+            }}
+      }
+      if (liked === true) {
+        likeIcon = <img alt='heart' className='like-icon' onClick={this.handleUnlikeClick} src={require('../images/red-heart-icon.png')} />
+      } else {
+        likeIcon = <img alt='heart' className='like-icon' onClick={this.handleLikeClick} src={require('../images/heart-icon.png')} />
+      }
     return(
     <div className='photo-detail'>
       <img alt={this.props.photo.id} src={this.props.photo.url}/>
       <br />
       <p className='photo-username'><Link to={'/user/' + this.props.photo.username}>{this.props.photo.username}</Link></p>
-      <p className='like-count'>{this.props.photo.likes_count} Likes</p>
+      <p className='like-count'>{likeIcon}{this.props.photo.likes_count} Likes</p>
       <br />
       <h3 className='detail-caption'>{this.props.photo.caption}</h3>
       <form onSubmit={this.handleSubmit} >
@@ -67,5 +92,22 @@ class PhotoDetail extends React.Component {
   }
 }
 
+function mapDispatchToProps(dispatch){
+  return {
+    likePhoto: (photo) => {
+      dispatch(likePhoto(photo))
+    },
+    unlikePhoto: (like) => {
+      dispatch(unlikePhoto(like))
+    }
+  }
+}
 
-export default connect()(PhotoDetail)
+function mapStateToProps(state){
+  return {
+    currentUser: state.users.currentUser
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoDetail)

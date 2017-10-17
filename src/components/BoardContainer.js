@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchCurrentUser } from '../actions/user_actions'
+import Board from './Board'
 
 class BoardContainer extends React.Component {
 
@@ -19,11 +20,16 @@ class BoardContainer extends React.Component {
 
   render(){
     let boardChoices
+    let chosenBoard
     if (this.props.currentUser){
       if (this.props.currentUser.boards){
         boardChoices=this.props.currentUser.boards.map((board, index) => <label key={index}><input type='radio' key={index} value={board.id} name='board-options' onChange={this.handleOptionChange} />{board.name}</label> )
       } else {
         boardChoices=null
+      }
+      if (this.state.selectedBoard) {
+        let currentBoard = this.state.selectedBoard
+        chosenBoard = <Board board={currentBoard} />
       }
       return(
         <div>
@@ -35,6 +41,7 @@ class BoardContainer extends React.Component {
             <p>Or select a board</p>
             {boardChoices}
           </div>
+          {chosenBoard}
         </div>
         )
     } else {
