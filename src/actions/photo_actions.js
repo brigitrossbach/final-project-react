@@ -92,3 +92,18 @@ export function addComment(body){
     .then(photos => dispatch(photosFetchSuccess(photos)))
   }
 }
+
+export function addPhotoToBoard(body){
+  return function(dispatch){
+    fetch('http://localhost:3000/addToBoard', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: body
+    })
+    .then(resp => resp.json())
+    .then(board => console.log(board))
+  }
+}
