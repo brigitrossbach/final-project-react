@@ -30,6 +30,8 @@ class BoardContainer extends React.Component {
       if (this.state.selectedBoard) {
         let currentBoard = this.state.selectedBoard
         chosenBoard = <Board board={currentBoard} />
+      } else {
+        chosenBoard=null
       }
       return(
         <div>

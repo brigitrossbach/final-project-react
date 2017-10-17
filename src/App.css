@@ -235,3 +235,8 @@
   height: 12px;
   width: 12px;
 }
+
+.photo-grid img{
+  height: 300px;
+  width: 300px;
+}

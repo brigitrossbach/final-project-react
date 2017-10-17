@@ -1,39 +1,20 @@
 import React from 'react'
-import Lightbox from 'react-images'
+import PhotoGrid from 'react-photo-feed'
+import "react-photo-feed/library/style.css";
 
 class Board extends React.Component {
 
-  state={
-    lightboxIsOpen: false,
-    currentImage: 0
-  }
-
-  closeLightbox = () => {
-    this.setState({
-      currentImage: 0,
-      lightboxIsOpen:false
-    })
-  }
-
-  gotoPrevLightboxImage = () => {
-    this.setState({currentImage: this.state.currentImage -1})
-  }
-
-  gotoNextLightboxImage = () => {
-    this.setState({currentImage: this.state.currentImage + 1})
-  }
-
   render(){
-    let photoSet=this.props.board.photos.map(photo => {src: photo.url})
+  let photos = this.props.board.photos
+  let photoSet = []
+    for (let i=0; i<photos.length; i++){
+      photoSet.push({id: photos[i].id, src: photos[i].url})
+    }
+
     return(
       <div>
-    <Lightbox
-     images={photoSet}
-     isOpen={this.state.lightboxIsOpen}
-     onClickPrev={this.gotoPrevLightboxImage}
-     onClickNext={this.gotoNextLightboxImage}
-     onClose={this.closeLightbox} />
-    </div>
+      <PhotoGrid className='photo-grid' columns={3} photos={photoSet} />
+      </div>
     )
   }
 }
