@@ -244,3 +244,13 @@
   height: 300px;
   width: 300px;
 }
+
+.draggable img{
+  height:300px;
+  width:300px;
+}
+
+
+.List {
+  margin-left:200px;
+}

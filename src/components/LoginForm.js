@@ -35,7 +35,7 @@ class LoginForm extends React.Component{
   })
   .then(() => {
     if (localStorage.getItem('jwt')) {
-      this.props.history.push('/me')
+      this.props.history.push('/')
     }
   })
 
