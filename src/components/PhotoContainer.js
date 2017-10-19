@@ -51,7 +51,7 @@ class PhotoContainer extends React.Component {
             return <PhotoDetail {...props} photo={givenPhoto} />
           }}/>
           <Route exact path='/' render={(props) => {
-            let passedPhotos = this.props.homepagePhotos.reverse()
+            let passedPhotos = this.props.homepagePhotos
             return <ProfilePhotoList photos={passedPhotos} />
           }} />
           <Route exact path='/user/:username' render={(props) => {

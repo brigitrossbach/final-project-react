@@ -5,7 +5,7 @@ import Search from './Search'
 class ProfilePhotoList extends React.Component {
 
   render(){
-    if (this.props.photos.length > 0) {
+    if (this.props.photos) {
       let allPhotos = this.props.photos.map((photo, index) => <Photo photo={photo} key={index} />)
       return(
         <div>

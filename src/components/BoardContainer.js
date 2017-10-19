@@ -48,7 +48,7 @@ class BoardContainer extends React.Component {
       }
       return(
         <div>
-          <form onSubmit={this.handleSubmit}>
+          <form className='form' onSubmit={this.handleSubmit}>
             <input type='text' onChange={this.handleChange} placeholder='Create a New Board' />
             <button type='submit' value='submit'>Add Board</button>
           </form>
