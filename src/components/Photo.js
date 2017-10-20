@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const Photo = (props) => {
-  let allTags = props.photo.tags.map((tag, index) => <p key={index}><Link to={'/photos/' + tag.tag}> #{tag.tag} </Link></p>)
+  let allTags = props.photo.tags.map((tag, index) => <p key={index}><Link to={'/photos/' + tag.tag}> #{tag.tag}</Link></p>)
   let likeCaption
   if (props.photo.likes_count === 1){
     likeCaption= ' Like'
