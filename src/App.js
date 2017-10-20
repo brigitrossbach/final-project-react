@@ -21,10 +21,10 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <Route exact path='/chat' component={ChatApp} />
+        <Route path='/upload' render={(props) => <AuthNewPhotoForm {...props} /> } />
         <Route path='/' render={(props) => <AuthPhotoContainer {...props} />} />
         <Route exact path='/users/new' render={(props) => <NewUserForm {...props}/>}/>
         <Route path='/boards' render={(props) => <BoardContainer {...props}/>}/>
-        <Route path='/photo/new' render={(props) => <AuthNewPhotoForm {...props} /> } />
         <Route exact path='/login' render={(props) => <LoginForm {...props}/>}/>
       </div>
     );

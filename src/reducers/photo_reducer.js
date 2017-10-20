@@ -1,11 +1,16 @@
-function photoReducer(state={list: [], userPhotos: [], isFetching: false}, action){
+import _ from 'lodash'
+
+function photoReducer(state={list: [], userPhotos: [], currentPhoto: {}, isFetching: false}, action){
   switch(action.type){
     case 'FETCHED_PHOTOS':
-      return Object.assign({}, state, {list: action.payload, isFetching: false})
+
+      return Object.assign({}, state, {list:_.uniqBy([...state.list, ...action.payload], 'id'), isFetching: false})
     case 'FETCHING_PHOTOS':
       return Object.assign({}, state, { isFetching: true})
     case 'FETCHED_USER_PHOTOS':
       return Object.assign({}, state, {userPhotos: action.payload, isFetching:false})
+    case 'FETCHED_CURRENT_PHOTO':
+      return Object.assign({}, state, {currentPhoto: action.payload, isFetching:false})
     default:
       return state
   }

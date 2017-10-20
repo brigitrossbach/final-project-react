@@ -1,13 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { likePhoto, unlikePhoto, addComment, addPhotoToBoard } from '../actions/photo_actions'
+import { likePhoto, unlikePhoto, addComment, addPhotoToBoard, fetchCurrentPhoto } from '../actions/photo_actions'
 
 class PhotoDetail extends React.Component {
 
   state={
     newComment: '',
     selectedBoard: null
+  }
+
+  componentDidMount(){
+    this.props.fetchPhoto(this.props.photoId)
   }
 
   handleChange=(e)=>{
@@ -132,13 +136,17 @@ function mapDispatchToProps(dispatch){
     },
     addPhotoToBoard: (body) => {
       dispatch(addPhotoToBoard(body))
+    },
+    fetchPhoto: (photoId) => {
+      dispatch(fetchCurrentPhoto(photoId))
     }
   }
 }
 
 function mapStateToProps(state){
   return {
-    currentUser: state.users.currentUser
+    currentUser: state.users.currentUser,
+    photo: state.photos.currentPhoto
   }
 }
 

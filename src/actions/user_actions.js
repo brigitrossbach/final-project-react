@@ -17,6 +17,21 @@ export function fetchCurrentUser(){
   }
 }
 
+export function userProfileFetched(user){
+  return {
+    type: "USER_PROFILE_FETCHED",
+    payload: user
+  }
+}
+
+export function fetchUserProfile(username){
+  return function(dispatch){
+    fetch(`http://localhost:3000/getuser/?username=${username}`)
+    .then(resp => resp.json())
+    .then(user => dispatch(userProfileFetched(user)))
+  }
+}
+
 export function userFollowed(user){
   return {
     type: "USER_FOLLOWED",

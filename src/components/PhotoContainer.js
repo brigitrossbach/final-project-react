@@ -7,12 +7,20 @@ import PhotoDetail from './PhotoDetail'
 import _ from 'lodash'
 import UserProfile from './UserProfile'
 import { fetchCurrentUser } from '../actions/user_actions'
+import Waypoint from 'react-waypoint'
 
 class PhotoContainer extends React.Component {
+
+  state={
+    allCounter: 1,
+    userCounter: 1
+  }
   componentDidMount(){
     this.props.fetchUserPhotos()
-    this.props.fetchPhotos()
+    this.props.fetchPhotos(this.state.allCounter)
     this.props.fetchCurrentUser()
+    let newState= this.state.allCounter +=1
+    this.setState({allCounter: newState})
   }
 
   shuffle(array){
@@ -30,10 +38,22 @@ class PhotoContainer extends React.Component {
     return array
   }
 
+  loadMoreContent = () => {
+    let counter=this.state.allCounter
+    console.log(this.props.location)
+    if (this.props.location.pathname === '/explore'){
+      this.props.fetchPhotos(counter)
+      let newState= counter +=1
+      this.setState({allCounter: newState})
+    }
+  }
+
+
   render(){
     if (this.props.allPhotos && this.props.userPhotos){
       return(
         <div>
+        <Waypoint onLeave={this.loadMoreContent} />
           <Route exact path = '/explore' render={(props) => {
             let publicPhotos=this.props.allPhotos.filter(photo => photo.public === true)
             this.shuffle(publicPhotos)
@@ -47,8 +67,7 @@ class PhotoContainer extends React.Component {
             return <ProfilePhotoList photos={taggedPhotos.reverse()} {...props} />}}/>
           <Route exact path='/photo/:id' render={(props) => {
             let photoId=parseInt(props.match.params.id, 10)
-            let givenPhoto=this.props.allPhotos.find(photo => photo.id === photoId)
-            return <PhotoDetail {...props} photo={givenPhoto} />
+            return <PhotoDetail {...props} photoId={photoId} />
           }}/>
           <Route exact path='/' render={(props) => {
             let passedPhotos = this.props.homepagePhotos
@@ -56,10 +75,7 @@ class PhotoContainer extends React.Component {
           }} />
           <Route exact path='/user/:username' render={(props) => {
             let username=props.match.params.username
-            let userProfilePhotos=this.props.allPhotos.filter(photo =>{
-              return photo.username == username
-            })
-            return <UserProfile {...props} currentUser={this.props.currentUser} photos={userProfilePhotos.reverse()} />
+            return <UserProfile {...props} currentUser={this.props.currentUser} username={username} />
           }} />
         </div>
       )
@@ -86,8 +102,8 @@ function mapDispatchToProps(dispatch){
     fetchUserPhotos: () => {
       dispatch(fetchUserPhotos())
     },
-    fetchPhotos: () => {
-      dispatch(fetchAllPhotos())
+    fetchPhotos: (counter) => {
+      dispatch(fetchAllPhotos(counter))
     },
     fetchCurrentUser: () => {
       dispatch(fetchCurrentUser())

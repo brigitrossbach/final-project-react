@@ -1,38 +1,30 @@
 import React from 'react'
 import ProfilePhotoList from './ProfilePhotoList'
 import { connect } from 'react-redux'
-import { followUser, unfollowUser } from '../actions/user_actions'
+import { followUser, unfollowUser, fetchUserProfile } from '../actions/user_actions'
 import { fetchUser } from '../services/user_services'
 
 class UserProfile extends React.Component{
 
-  state={
-    user: null
-  }
-
-componentWillReceiveProps(nextProps){
-    if (nextProps.photos.length > 0){
-      fetchUser(nextProps.photos[0].user_id)
-      .then(user => this.setState({user: user}))
-    }
+componentDidMount(){
+  let username = this.props.username
+  this.props.fetchUserProfile(username)
 }
 
   handleFollow = (e) => {
-    let followedUser = this.state.user
+    let followedUser = this.props.user
     this.props.followUser(followedUser)
   }
 
   handleUnfollow = () => {
-    let followedUser = this.state.user
+    let followedUser = this.props.user
     this.props.unfollowUser(followedUser)
   }
 
   render(){
-    if (this.state.user && this.props.currentUser){
-      console.log(this.state.user)
-      console.log(this.props.currentUser)
-      let user = this.state.user
-      let photoList= <ProfilePhotoList photos={this.props.photos} />
+    if (this.props.user && this.props.currentUser){
+      let user = this.props.user
+      let photoList= <ProfilePhotoList photos={this.props.user.photos} />
       let isFollowing
       for (let i=0; i<this.props.currentUser.all_following.length; i++) {
           if (this.props.currentUser.all_following[i].id === user.id) {
@@ -89,14 +81,17 @@ function mapDispatchToProps(dispatch){
     },
     unfollowUser: (user) => {
       dispatch(unfollowUser(user))
+    },
+    fetchUserProfile: (username) => {
+      dispatch(fetchUserProfile(username))
     }
   }
 }
 
-// function mapStateToProps(state){
-//   return{
-//     currentUser: state.users.currentUser
-//   }
-// }
+function mapStateToProps(state){
+  return{
+    user: state.users.userProfile
+  }
+}
 
-export default connect(null, mapDispatchToProps)(UserProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)

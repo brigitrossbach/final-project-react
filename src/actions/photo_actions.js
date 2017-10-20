@@ -22,7 +22,7 @@ export function photosFetchSuccess(photos){
 export function fetchUserPhotos(){
   return function(dispatch){
     dispatch(fetchingPhotos())
-    fetch('http://localhost:3000/users', {
+    fetch(`http://localhost:3000/users`, {
       headers: {
         'Authorization': localStorage.getItem('jwt')
       }
@@ -34,10 +34,10 @@ export function fetchUserPhotos(){
   }
 }
 
-export function fetchAllPhotos(){
+export function fetchAllPhotos(counter){
   return function(dispatch){
     dispatch(fetchingPhotos())
-    fetch('http://localhost:3000/photos')
+    fetch(`http://localhost:3000/photos/?page=${counter}`)
     .then(resp => resp.json())
     .then(json => {
       dispatch(photosFetchSuccess(json))
@@ -105,5 +105,21 @@ export function addPhotoToBoard(body){
     })
     .then(resp => resp.json())
     .then(board => console.log(board))
+  }
+}
+
+export function photoFetched(photo){
+  return {
+    type: 'FETCHED_CURRENT_PHOTO',
+    payload: photo
+  }
+}
+
+export function fetchCurrentPhoto(photoId){
+  return function(dispatch){
+    dispatch(fetchingPhotos())
+    fetch(`http://localhost:3000/photos/${photoId}`)
+    .then(resp => resp.json())
+    .then(json => dispatch(photoFetched(json)))
   }
 }

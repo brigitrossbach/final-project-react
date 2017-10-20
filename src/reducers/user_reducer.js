@@ -1,4 +1,4 @@
-function userReducer(state= { currentUser:null, homepagePhotos: []}, action){
+function userReducer(state= { currentUser:null, homepagePhotos: [], userProfile:{} }, action){
   switch(action.type){
     case 'USER_FETCHED':
     let flatPhotos
@@ -8,6 +8,8 @@ function userReducer(state= { currentUser:null, homepagePhotos: []}, action){
         flatPhotos=[]
       }
       return Object.assign({}, state, {currentUser: action.payload, homepagePhotos: flatPhotos})
+    case 'USER_PROFILE_FETCHED':
+      return Object.assign({}, state, {userProfile: action.payload})
     default:
       return state
   }
