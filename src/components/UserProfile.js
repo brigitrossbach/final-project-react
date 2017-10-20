@@ -2,7 +2,6 @@ import React from 'react'
 import ProfilePhotoList from './ProfilePhotoList'
 import { connect } from 'react-redux'
 import { followUser, unfollowUser, fetchUserProfile } from '../actions/user_actions'
-import { fetchUser } from '../services/user_services'
 
 class UserProfile extends React.Component{
 
@@ -23,18 +22,17 @@ componentDidMount(){
 
   render(){
     if (this.props.user && this.props.currentUser){
-      let user = this.props.user
       let photoList= <ProfilePhotoList photos={this.props.user.photos} />
       let isFollowing
       for (let i=0; i<this.props.currentUser.all_following.length; i++) {
-          if (this.props.currentUser.all_following[i].id === user.id) {
+          if (this.props.currentUser.all_following[i].id === this.props.user.id) {
               isFollowing = true
               break
           } else {
             isFollowing=false
           }}
       let ownProfile
-      if (this.props.currentUser.id === user.id){
+      if (this.props.currentUser.id === this.props.user.id){
         ownProfile= true
       } else {
         ownProfile=false
@@ -50,15 +48,15 @@ componentDidMount(){
       }
       return(
         <div className='user-profile-card'>
-        <div className='user-profile-username'>{user.username}</div>
-          <div className='user-name'>{user.first_name} {user.last_name}</div>
+        <div className='user-profile-username'>{this.props.user.username}</div>
+          <div className='user-name'>{this.props.user.first_name} {this.props.user.last_name}</div>
         <div className='follower-info'>
           <a>
-              {user.followers.length} Followers
+              {this.props.user.follower_count} Followers
               <br />
           </a>
           <a>
-            {user.all_following.length} Following
+            {this.props.user.following_count} Following
           </a>
           <br />
           {buttonFunction()}

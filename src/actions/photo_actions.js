@@ -45,6 +45,22 @@ export function fetchAllPhotos(counter){
   }
 }
 
+export function photoFetched(photo){
+  return {
+    type: 'FETCHED_CURRENT_PHOTO',
+    payload: photo
+  }
+}
+
+export function fetchCurrentPhoto(photoId){
+  return function(dispatch){
+    dispatch(fetchingPhotos())
+    fetch(`http://localhost:3000/photos/${photoId}`)
+    .then(resp => resp.json())
+    .then(json => dispatch(photoFetched(json)))
+  }
+}
+
 
 export function likePhoto(photo){
   return function(dispatch){
@@ -59,7 +75,7 @@ export function likePhoto(photo){
       body: body
     })
     .then(resp => resp.json())
-    .then(photos => dispatch(photosFetchSuccess(photos)))
+    .then(photo => dispatch(photoFetched(photo)))
   }
 }
 
@@ -73,7 +89,7 @@ export function unlikePhoto(like){
       }
     })
     .then(resp => resp.json())
-    .then(photos => dispatch(photosFetchSuccess(photos)))
+    .then(photos => dispatch(photoFetched(photos)))
   }
 }
 
@@ -89,7 +105,7 @@ export function addComment(body){
       body: body
     })
     .then(resp => resp.json())
-    .then(photos => dispatch(photosFetchSuccess(photos)))
+    .then(photo => dispatch(photoFetched(photo)))
   }
 }
 
@@ -105,21 +121,5 @@ export function addPhotoToBoard(body){
     })
     .then(resp => resp.json())
     .then(board => console.log(board))
-  }
-}
-
-export function photoFetched(photo){
-  return {
-    type: 'FETCHED_CURRENT_PHOTO',
-    payload: photo
-  }
-}
-
-export function fetchCurrentPhoto(photoId){
-  return function(dispatch){
-    dispatch(fetchingPhotos())
-    fetch(`http://localhost:3000/photos/${photoId}`)
-    .then(resp => resp.json())
-    .then(json => dispatch(photoFetched(json)))
   }
 }

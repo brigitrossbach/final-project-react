@@ -40,7 +40,6 @@ export function userFollowed(user){
 }
 
 export function followUser(user){
-  console.log('followUser')
   return function(dispatch){
     let newBody=JSON.stringify({followed_user: user})
     console.log(newBody)
@@ -54,7 +53,7 @@ export function followUser(user){
       body: newBody
     })
     .then(resp => resp.json())
-    .then(json => console.log(json))
+    .then(json => dispatch(userProfileFetched(json)))
   }
 }
 
@@ -71,6 +70,6 @@ export function unfollowUser(user){
       body: newBody
     })
     .then(resp => resp.json())
-    .then(json => console.log(json))
+    .then(json => dispatch(userProfileFetched(json)))
   }
 }

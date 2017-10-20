@@ -13,7 +13,7 @@ class Board extends React.Component {
     }
     let draggablePhotos = []
     for(let i=0; i<photos.length; i++){
-      draggablePhotos.push({content: (<img src={photos[i].url} alt='board-photo' />)})
+      draggablePhotos.push({content: (<img src={photos[i].url} alt='board-pic' />)})
     }
 
     let onSort= function(sortedList, dropEvent){

@@ -19,7 +19,8 @@ class PhotoContainer extends React.Component {
     this.props.fetchUserPhotos()
     this.props.fetchPhotos(this.state.allCounter)
     this.props.fetchCurrentUser()
-    let newState= this.state.allCounter +=1
+    let counter = this.state.allCounter
+    let newState= counter +=1
     this.setState({allCounter: newState})
   }
 
@@ -40,7 +41,6 @@ class PhotoContainer extends React.Component {
 
   loadMoreContent = () => {
     let counter=this.state.allCounter
-    console.log(this.props.location)
     if (this.props.location.pathname === '/explore'){
       this.props.fetchPhotos(counter)
       let newState= counter +=1

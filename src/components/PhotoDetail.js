@@ -26,6 +26,7 @@ class PhotoDetail extends React.Component {
   }
 
   handleLikeClick = () => {
+    console.log('like')
     this.props.likePhoto(this.props.photo)
   }
 
