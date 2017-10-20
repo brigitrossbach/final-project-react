@@ -40,16 +40,16 @@
   margin: 0 40px 0 0;*/
   height: 300px;
   width: 300px;
-
+  padding:7px;
 }
 
 .photo-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   text-align: justify;
   margin:5px;
   float: center;
-  margin-left:48px;
+  margin-left:200px;
   width: 300px;
   margin-top:30px;
   /*display: inline-block;
@@ -65,11 +65,11 @@
   margin-left:5px;
   font-size: 12px;
   font-family: "Helvetica", Times;
-
 }
 
 .description {
   font-size:12px;
+  display: inline-flex;
 }
 
 .logo {
@@ -168,6 +168,7 @@
   font-size: 12px;
   text-align: left;
   margin-left: 5px;
+  display: inline;
 }
 
 .search-box {

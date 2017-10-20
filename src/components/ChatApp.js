@@ -35,7 +35,6 @@ class ChatApp extends React.Component {
     return this.state.chatLogs.map((el) => {
       return (
         <li key={`chat_${el.id}`}>
-          <span>Username:</span>
           <span className='chat-message'>{ el.content }</span>
           <span className='chat-created-at'>{ el.created_at }</span>
         </li>
@@ -77,7 +76,7 @@ class ChatApp extends React.Component {
   handleChatInputKeyPress(event) {
     if(event.key === 'Enter') {
       this.handleSendEvent(event);
-    }//end if
+    }
   }
 
   handleSendEvent(event) {
