@@ -16,14 +16,14 @@ const NavBar = () => {
   let boardsButton
   let chatButton
   if (localStorage.getItem('jwt')){
-    uploadButton = <NavLink className='nav-bar-button upload-button' to='/upload'>Upload</NavLink>
-    exploreButton = <NavLink to='/explore' className='nav-bar-button explore-button'>Explore</NavLink>
-    profileButton = <NavLink className='nav-bar-button profile-button' to='/me'>Profile</NavLink>
+    uploadButton = <NavLink className='nav-bar-button upload-button' to='/upload'><img className='nav-icon' alt='nav-icon' src={require('../images/upload-icon.png')} /></NavLink>
+    exploreButton = <NavLink to='/explore' className='nav-bar-button explore-button'><img className='nav-icon' alt='nav-icon' src={require('../images/explore-icon.png')} /></NavLink>
+    profileButton = <NavLink className='nav-bar-button profile-button' to='/me'><img className='nav-icon' alt='nav-icon' src={require('../images/profile-icon.png')} /></NavLink>
     loginButton = null
     signUpButton = null
-    chatButton=<NavLink className='nav-bar-button chat-button' to='/chat'>Chat</NavLink>
-    boardsButton=<NavLink className='nav-bar-button boards-button' to='/boards'>Boards</NavLink>
-    logoutButton = <NavLink className='nav-bar-button logout-button' to='/login' onClick={handleLogout}>Logout</NavLink>
+    chatButton=<NavLink className='nav-bar-button chat-button' to='/chat'><img className='nav-icon' alt='nav-icon' src={require('../images/chat-icon.png')} /></NavLink>
+    boardsButton=<NavLink className='nav-bar-button boards-button' to='/boards'><img className='nav-icon' alt='nav-icon' src={require('../images/boards-icon.png')} /></NavLink>
+    logoutButton = <NavLink className='nav-bar-button logout-button' to='/login' onClick={handleLogout}><img className='nav-icon' alt='nav-icon' src={require('../images/logout-icon.ico')} /></NavLink>
   } else {
     loginButton = <NavLink className='nav-bar-button login-button' to='/me'>Log In</NavLink>
     signUpButton= <NavLink className='nav-bar-button signup-button' to='/users/new'>New User</NavLink>

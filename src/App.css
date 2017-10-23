@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css?family=Dosis|Raleway');
+
+
 .App {
   text-align: center;
   /*display: grid;
@@ -52,6 +56,8 @@
   margin-left:200px;
   width: 300px;
   margin-top:30px;
+  font-family: 'Dosis Regular', sans-serif;
+  font-size:13px;
   /*display: inline-block;
   position: relative;*/
 }
@@ -63,13 +69,16 @@
 .caption {
   position:relative;
   margin-left:5px;
-  font-size: 12px;
-  font-family: Helvetica;
+  font-size: 13px;
+  /*font-family: 'Raleway', sans-serif;*/
 }
 
 .description {
-  font-size:12px;
+  font-size:13px;
   display: inline-flex;
+  float: left;
+  margin-left: 345px;
+  /*font-family: 'Raleway', sans-serif;*/
 }
 
 .logo {
@@ -86,7 +95,7 @@
 .nav-bar {
   display: grid;
   grid-template-columns: repeat(20, 1fr);
-  background-color: #98a1a5;
+  background-color: #cdd2d8;
   color: white;
   margin-bottom: 10px
 }
@@ -132,7 +141,7 @@
   border: 2px solid #bbb;
   justify-content: center;
   align-items: center;
-  font-family: "Helvetica Header";
+  font-family: 'Dosis Medium', sans-serif;
   background-color: #dae1ed;
   margin-left: 2px;
   font: bold 14px Arial;
@@ -153,10 +162,17 @@
 .photo-detail img{
   max-height: 700px;
   max-width: 700px;
+  grid-column: 2;
+  margin-bottom: 5px;
 }
 
+/*.photo-detail {
+  display: grid;
+  grid-template-columns: repeat( 5, 1fr)
+}*/
+
 .detail-caption {
-  font-family: 'Helvetica';
+  font-family: 'Dosis Regular', sans-serif;
   font-size: 14px;
   text-align:left;
   margin-left: 335px;
@@ -168,6 +184,12 @@
   text-align:left;
   margin-left: 335px;
 }
+
+.nav-icon {
+  height: 25px;
+  width: 25px;
+}
+
 
 .content {
   font-size: 12px;

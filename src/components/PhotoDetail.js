@@ -53,7 +53,7 @@ class PhotoDetail extends React.Component {
   render(){
     let liked
     let likeIcon
-    if (this.props.photo){
+    if (this.props.photo && this.props.photo.id === this.props.photoId){
       let allComments
       if (this.props.photo.comments && this.props.currentUser){
         allComments=this.props.photo.comments.map((comment, index) => {
@@ -94,7 +94,12 @@ class PhotoDetail extends React.Component {
       selectBoxOptions = this.props.currentUser.boards.map((board,index) => <option key={index} value={board.id}>{board.name}</option>)
     }
 
-
+    let allTags
+    if (this.props.photo && this.props.photo.tags) {
+      allTags = this.props.photo.tags.map((tag, index) => <p key={index}><Link to={'/photos/' + tag.tag}> #{tag.tag}</Link></p>)
+    } else {
+      allTags = null
+    }
 
     return(
     <div className='photo-detail'>
@@ -104,6 +109,7 @@ class PhotoDetail extends React.Component {
       <p className='like-count'>{likeIcon}{this.props.photo.likes_count}{likeCaption}</p><div className='dropdown-photo-board'><form onSubmit={this.handleBoardSubmit}><select onChange={this.handleSelectChange}><option>Add to a Board</option>{selectBoxOptions}</select><button type='submit' value='submit'>+</button></form></div>
       <br />
       <h3 className='detail-caption'>{this.props.photo.caption}</h3>
+      <div className='description'>{allTags}</div>
       <form onSubmit={this.handleSubmit} >
       <textarea className='comment-input' value={this.state.newComment} onChange={this.handleChange} placeholder='Add a Comment...' />
       <br />
