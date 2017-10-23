@@ -286,7 +286,6 @@
 
 .each-comment {
   grid-column: 2;
-
 }
 
 .user-profile-card {
@@ -365,4 +364,10 @@ button.send {
   padding: 10px 20px;
   font-size: 20px;
   border-radius: 3px;
+}
+
+.search-box{
+  float: left;
+  width: 200px;
+  margin-left: 50px;
 }

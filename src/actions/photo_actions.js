@@ -133,3 +133,18 @@ export function deleteComment(comment) {
     .then(photo => dispatch(photoFetched(photo)))
   }
 }
+
+export function photosSearched(photos){
+  return {
+    type: 'SEARCH_RESULTS',
+    payload: photos
+  }
+}
+
+export function searchPhotos(searchTerm){
+  return function(dispatch){
+    fetch(`http://localhost:3000/search/?term=${searchTerm}`)
+    .then(resp => resp.json())
+    .then(photos => dispatch(photosSearched(photos)))
+  }
+}

@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-function photoReducer(state={list: [], userPhotos: [], currentPhoto: {}, isFetching: false}, action){
+function photoReducer(state={list: [], userPhotos: [], currentPhoto: {}, searchResults: [], isFetching: false}, action){
   switch(action.type){
     case 'FETCHED_PHOTOS':
 
@@ -11,6 +11,8 @@ function photoReducer(state={list: [], userPhotos: [], currentPhoto: {}, isFetch
       return Object.assign({}, state, {userPhotos: action.payload, isFetching:false})
     case 'FETCHED_CURRENT_PHOTO':
       return Object.assign({}, state, {currentPhoto: action.payload, isFetching:false})
+    case 'SEARCH_RESULTS':
+      return Object.assign({}, state, {searchResults: action.payload})
     default:
       return state
   }
