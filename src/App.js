@@ -21,6 +21,7 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <Route exact path='/chat' component={ChatApp} />
+        <Route exact path='/search' component={Search} />
         <Route path='/upload' render={(props) => <AuthNewPhotoForm {...props} /> } />
         <Route path='/' render={(props) => <AuthPhotoContainer {...props} />} />
         <Route exact path='/users/new' render={(props) => <NewUserForm {...props}/>}/>

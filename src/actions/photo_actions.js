@@ -123,3 +123,13 @@ export function addPhotoToBoard(body){
     .then(board => console.log(board))
   }
 }
+
+export function deleteComment(comment) {
+  return function(dispatch){
+    fetch(`http://localhost:3000/comments/${comment.id}`, {
+      method: 'delete'
+    })
+    .then(resp => resp.json())
+    .then(photo => dispatch(photoFetched(photo)))
+  }
+}

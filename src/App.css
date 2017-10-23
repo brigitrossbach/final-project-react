@@ -75,9 +75,10 @@
 
 .description {
   font-size:13px;
-  display: inline-flex;
-  float: left;
-  margin-left: 345px;
+  display: inline;
+  justify-self: left;
+  margin-left: 20px;
+  grid-column: 3;
   /*font-family: 'Raleway', sans-serif;*/
 }
 
@@ -112,8 +113,12 @@
   grid-column: 18;
 }
 
-.upload-button {
+.search-button {
   grid-column: 15;
+}
+
+.upload-button {
+  grid-column: 14;
 }
 
 .logout-button {
@@ -162,27 +167,51 @@
 .photo-detail img{
   max-height: 700px;
   max-width: 700px;
-  grid-column: 2;
+  grid-column: 1;
   margin-bottom: 5px;
+  margin-left: 10px;
 }
 
-/*.photo-detail {
-  display: grid;
-  grid-template-columns: repeat( 5, 1fr)
-}*/
+.username {
+  justify-self: right;
+  margin-right: 4px;
+}
+
+.photo-caption {
+  justify-self: left;
+  margin-left: 4px;
+}
+
+.photo-detail {
+  /*display: grid;
+  grid-template-columns: repeat( 5, 1fr);
+  grid-template-rows: auto;*/
+}
 
 .detail-caption {
   font-family: 'Dosis Regular', sans-serif;
   font-size: 14px;
-  text-align:left;
-  margin-left: 335px;
-  margin-top:20px;
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.caption {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}
+
+.dropdown-photo-board {
+  grid-column: 3;
+  justify-self: left;
 }
 
 .photo-username {
   font-size: 12px;
   text-align:left;
-  margin-left: 335px;
+  grid-column: 2;
+  margin-left:15px;
+  grid-row: 1;
 }
 
 .nav-icon {
@@ -190,6 +219,24 @@
   width: 25px;
 }
 
+.add-comment-form {
+  grid-column:2;
+  grid-row: 2;
+  padding:10px;
+}
+
+.add-comment-button {
+  margin-top: 5px;
+  float: left;
+}
+
+.comment-header {
+  grid-column: 2;
+  justify-self: left;
+  margin-left: 5px;
+  font-weight: bold;
+  font-size:14px;
+}
 
 .content {
   font-size: 12px;
@@ -212,42 +259,34 @@
 	border-width: 1px;
 	border-style: solid;
 	color: #474e57;
-	font-size: 12px;
-	font-weight: 400;
 	padding: 10px;
 }
 
 .comment-input {
   float:left;
-  /*margin-top: 10px;*/
-  margin-left:335px;
+
   width:300px;
 }
 
 .like-count {
-  float:left;
-  margin-left: 335px;
+  grid-column: 1;
+  grid-row: 2;
   font-size: 11px;
-}
-
-.add-comment-button {
-  float: left;
-  margin-left: 333px;
-
+  justify-self: right;
+  margin-right: 3px;
 }
 
 .photo-comments {
-  float:left;
-  margin-right: -200px;
+  /*float:left;*/
   font-size: 13px;
   margin-top: 10px;
+  grid-column: 2;
+  justify-self: left;
 }
 
-.comment-header {
-  font-weight: bold;
-  float: left;
-  margin-left:333px;
-  font-size:14px;
+.each-comment {
+  grid-column: 2;
+
 }
 
 .user-profile-card {
