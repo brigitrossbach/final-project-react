@@ -148,3 +148,13 @@ export function searchPhotos(searchTerm){
     .then(photos => dispatch(photosSearched(photos)))
   }
 }
+
+export function deletePhoto(photo){
+  return function(dispatch){
+    fetch(`http://localhost:3000/photos/${photo.id}`, {
+      method: 'delete'
+    })
+    .then(resp => resp.json())
+    .then(photos =>userPhotosFetchSuccess(photos))
+  }
+}

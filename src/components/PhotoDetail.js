@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { likePhoto, unlikePhoto, addComment, addPhotoToBoard, fetchCurrentPhoto, deleteComment } from '../actions/photo_actions'
+import { deletePhoto, likePhoto, unlikePhoto, addComment, addPhotoToBoard, fetchCurrentPhoto, deleteComment } from '../actions/photo_actions'
 
 class PhotoDetail extends React.Component {
 
@@ -50,6 +50,11 @@ class PhotoDetail extends React.Component {
     alert('Photo added!')
   }
 
+  handleDeletePhoto = () => {
+    this.props.deletePhoto(this.props.photo)
+    this.props.history.push('/me')
+  }
+
   render(){
     let liked
     let likeIcon
@@ -68,6 +73,14 @@ class PhotoDetail extends React.Component {
       } else {
         allComments=<p></p>
       }
+      let deleteButton
+      if (this.props.currentUser && this.props.photo){
+      if (this.props.photo.user_id === this.props.currentUser.id){
+        deleteButton = <button className='delete-photo-button' onClick={this.handleDeletePhoto}>X</button>
+      } else {
+        deleteButton = null
+      }
+    }
       if (this.props.photo.likes && this.props.currentUser){
         for (let i=0; i<this.props.photo.likes.length; i++) {
             if (this.props.currentUser.id == this.props.photo.likes[i].user_id) {
@@ -110,8 +123,9 @@ class PhotoDetail extends React.Component {
         <span className='photo-caption'>{' ' + this.props.photo.caption}</span>
         <span className='like-count'>{likeIcon}{this.props.photo.likes_count}{likeCaption}</span>
         <div className='dropdown-photo-board'><form onSubmit={this.handleBoardSubmit}><select onChange={this.handleSelectChange}><option>Add to a Board</option>{selectBoxOptions}</select><button type='submit' value='submit'>+</button></form></div>
+        {deleteButton}
         <div className='description' >{allTags}</div>
-        <form className='add-comment-form' onSubmit={this.handleSubmit} >
+        <form className='add-comment-form form' onSubmit={this.handleSubmit} >
           <textarea className='comment-input' value={this.state.newComment} onChange={this.handleChange} placeholder='Add a Comment...' />
           <br />
           <br />
@@ -151,6 +165,9 @@ function mapDispatchToProps(dispatch){
     },
     deleteComment: (comment) => {
       dispatch(deleteComment(comment))
+    },
+    deletePhoto: (photo) => {
+      dispatch(deletePhoto(photo))
     }
   }
 }
@@ -164,22 +181,3 @@ function mapStateToProps(state){
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoDetail)
-
-// <div className='photo-detail'>
-//   <img alt={this.props.photo.id} src={this.props.photo.url}/>
-//   <div className='caption'
-//   <p className='photo-username caption'><Link to={'/user/' + this.props.photo.username}>{this.props.photo.username}</Link></p>
-//   <p className='like-count'>{likeIcon}{this.props.photo.likes_count}{likeCaption}</p><div className='dropdown-photo-board'><form onSubmit={this.handleBoardSubmit}><select onChange={this.handleSelectChange}><option>Add to a Board</option>{selectBoxOptions}</select><button type='submit' value='submit'>+</button></form></div>
-//   <br />
-//   <h3 className='detail-caption caption'>{this.props.photo.caption}</h3>
-//   <div className='description' >{allTags}</div>
-//   <form onSubmit={this.handleSubmit} >
-//   <textarea className='comment-input' value={this.state.newComment} onChange={this.handleChange} placeholder='Add a Comment...' />
-//   <br />
-//   <br />
-//   <button className='add-comment-button' value='submit' type='submit'>Add Comment</button>
-//   </form>
-//   <br />
-//   <p className='comment-header'>Comments</p><br />
-//   <div className='photo-comments'>{allComments}</div>
-// </div>
