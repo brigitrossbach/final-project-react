@@ -4,6 +4,7 @@
 
 .App {
   text-align: center;
+  font-family: 'Montserrat';
   /*display: grid;
   grid-template-columns: repeat(4, 1fr);*/
 }
@@ -62,8 +63,23 @@
   position: relative;*/
 }
 
+.indiv-photo p.hover-caption {
+    display: none;
+    position:relative;
+    color:black;
+    font-weight:bold;
+    left:50%;
+    top:50%;
+
+}
+
+.indiv-photo:hover p.hover-caption {
+  display:block;
+}
+
 .indiv-photo:hover  {
   border: 1px solid white;
+  background-size: cover;
 }
 
 .caption {
@@ -100,7 +116,7 @@
   grid-template-columns: repeat(20, 1fr);
   background-color: #cdd2d8;
   color: white;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 .home-button {

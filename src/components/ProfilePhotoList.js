@@ -1,6 +1,5 @@
 import React from 'react'
 import Photo from './Photo'
-import Search from './Search'
 
 class ProfilePhotoList extends React.Component {
 

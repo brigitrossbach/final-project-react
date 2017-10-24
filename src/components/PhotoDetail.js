@@ -71,7 +71,7 @@ class PhotoDetail extends React.Component {
           return <p key={index} className='each-comment'>{trashCan} {comment.comment}   --<Link to={'/user/' + comment.username}>{comment.username}</Link></p>
         })
       } else {
-        allComments=<p></p>
+        allComments=<p>No comments yet!</p>
       }
       let deleteButton
       if (this.props.currentUser && this.props.photo){

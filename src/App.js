@@ -10,7 +10,7 @@ import Search from './components/Search'
 import Authorize from './components/Authorize'
 import BoardContainer from './components/BoardContainer'
 import ChatApp from './components/ChatApp'
-import NotFound from './components/NotFound'
+// import NotFound from './components/NotFound'
 
 class App extends Component {
 
