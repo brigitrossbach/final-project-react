@@ -202,6 +202,41 @@
   grid-template-rows: auto;*/
 }
 
+.profile-card {
+  display:grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.profile-username {
+  grid-column: 3;
+}
+
+.profile-bio {
+  grid-column: 2/7;
+  grid-row:2;
+}
+
+.profile-name {
+  font-weight: bold;
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.profile-post-count {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.profile-following {
+  grid-column: 6;
+  grid-row: 1;
+}
+
+.profile-followers {
+  grid-column: 5;
+  grid-row: 1;
+}
+
 .detail-caption {
   font-family: 'Dosis Regular', sans-serif;
   font-size: 14px;

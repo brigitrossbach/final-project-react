@@ -8,6 +8,7 @@ import _ from 'lodash'
 import UserProfile from './UserProfile'
 import { fetchCurrentUser } from '../actions/user_actions'
 import Waypoint from 'react-waypoint'
+import SelfProfile from './SelfProfile'
 
 class PhotoContainer extends React.Component {
 
@@ -59,7 +60,7 @@ class PhotoContainer extends React.Component {
             this.shuffle(publicPhotos)
             return <ProfilePhotoList photos={publicPhotos} {...props} />
           }}/>
-          <Route exact path='/me' render={(props) => <ProfilePhotoList photos={this.props.userPhotos.reverse()} {...props} />}/>
+          <Route exact path='/me' render={(props) => <SelfProfile photos={this.props.userPhotos.reverse()} {...props} />}/>
           <Route exact path='/photos/:tag' render={(props) => {
             let urlTag=props.match.params.tag
             let allPhotos=this.props.allPhotos
