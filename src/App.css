@@ -46,6 +46,7 @@
   height: 300px;
   width: 300px;
   padding:7px;
+  position:relative;
 }
 
 .photo-list {
@@ -63,23 +64,17 @@
   position: relative;*/
 }
 
-.indiv-photo p.hover-caption {
-    display: none;
-    position:relative;
-    color:black;
-    font-weight:bold;
-    left:50%;
-    top:50%;
-
-}
-
-.indiv-photo:hover p.hover-caption {
-  display:block;
+.hover-caption {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  opacity: 1;
+  background-color: black;
 }
 
 .indiv-photo:hover  {
-  border: 1px solid white;
-  background-size: cover;
+  /*border: 1px solid white;*/
+  opacity: 0.4;
 }
 
 .caption {
@@ -244,6 +239,11 @@
   grid-row: 2;
   padding:10px;
   font-family: 'Montserrat';
+}
+
+.inline-icon img {
+  height: 15px;
+  width: 15px;
 }
 
 .add-comment-button {
