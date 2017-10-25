@@ -42,7 +42,6 @@ export function userFollowed(user){
 export function followUser(user){
   return function(dispatch){
     let newBody=JSON.stringify({followed_user: user})
-    console.log(newBody)
     fetch('http://localhost:3000/follow', {
       method: 'post',
       headers: {

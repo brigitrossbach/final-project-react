@@ -39,7 +39,7 @@
   max-width: 600px;
 }
 
-.indiv-photo img{
+.indiv-photo-img{
   /*position: relative;
   display: inline-block;
   margin: 0 40px 0 0;*/
@@ -72,7 +72,7 @@
   background-color: black;
 }
 
-.indiv-photo:hover  {
+.indiv-photo-img:hover  {
   /*border: 1px solid white;*/
   opacity: 0.4;
 }
@@ -282,6 +282,11 @@
 	border-style: solid;
 	color: #474e57;
 	padding: 10px;
+}
+
+.inline-icon {
+  height: 12px;
+  width: 12px;
 }
 
 .comment-input {
