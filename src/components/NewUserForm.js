@@ -6,7 +6,8 @@ class NewUserForm extends React.Component {
     password:'',
     firstName:'',
     lastName:'',
-    email:''
+    email:'',
+    bio: ''
   }
 
   handlePasswordChange = (event) =>{
@@ -29,10 +30,14 @@ class NewUserForm extends React.Component {
     this.setState({email: event.target.value})
   }
 
+  handleBioChange = (event) => {
+    this.setState({bio: event.target.value})
+  }
+
 
   handleSubmit=(event)=>{
     event.preventDefault()
-    let newBody = JSON.stringify({username: this.state.username, password:this.state.password, email: this.state.email, first_name: this.state.firstName, last_name: this.state.lastName})
+    let newBody = JSON.stringify({username: this.state.username, password:this.state.password, email: this.state.email, first_name: this.state.firstName, last_name: this.state.lastName, bio: this.state.bio})
     fetch('http://localhost:3000/users', {
       method:"POST",
       headers:{
@@ -49,7 +54,8 @@ class NewUserForm extends React.Component {
         password:'',
         firstName:'',
         lastName:'',
-        email:''
+        email:'',
+        bio: ''
       })
     })
     .then(() => this.props.history.push('/'))
@@ -77,6 +83,10 @@ class NewUserForm extends React.Component {
       <div className='field'>
         <label>Email:</label>
         <input type='text' placeholder='Email' onChange={this.handleEmailChange} value={this.state.email}/>
+      </div>
+      <div className='field'>
+        <label>Bio</label>
+        <input type='text' placeholder='Bio' onChange={this.handleBioChange} value={this.state.bio}/>
       </div>
       <button className='ui button' type='submit'>Submit</button>
     </form>

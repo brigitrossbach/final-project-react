@@ -9,7 +9,8 @@ class EditProfile extends React.Component {
     username: '',
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    bio: ''
   }
 
   componentWillReceiveProps(nextProps){
@@ -19,7 +20,8 @@ class EditProfile extends React.Component {
         username:nextProps.currentUser.username,
         first_name:nextProps.currentUser.first_name,
         last_name:nextProps.currentUser.last_name,
-        email:nextProps.currentUser.email
+        email:nextProps.currentUser.email,
+        bio: nextProps.currentUser.bio
       })
     }
   }
@@ -38,6 +40,10 @@ class EditProfile extends React.Component {
 
   handleEmailChange = (event) =>{
     this.setState({email: event.target.value})
+  }
+
+  handleBioChange = (event) => {
+    this.setState({bio: event.target.value})
   }
 
   handleSubmit=(event)=>{
@@ -66,6 +72,10 @@ class EditProfile extends React.Component {
           <div className='field'>
             <label>Email:</label>
             <input type='text' placeholder='Email' onChange={this.handleEmailChange} value={this.state.email}/>
+          </div>
+          <div className='field'>
+            <label>Bio</label>
+            <input type='text' placeholder='Bio' onChange={this.handleBioChange} value={this.state.bio}/>
           </div>
           <button className='ui button' type='submit'>Submit</button>
         </form>
