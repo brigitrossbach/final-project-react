@@ -47,8 +47,7 @@ class NewPhotoForm extends React.Component {
       }
     })
     .then(resp => resp.json())
-    .then(json => console.log(json))
-    .then(() => this.props.history.push('/me'))
+    .then(json => this.props.history.push(`/photo/${json.id}`))
   }
 
   render(){
