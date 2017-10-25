@@ -7,7 +7,7 @@ import ReactHover from 'react-hover'
 class Photo extends React.Component {
   render(){
 
-    let caption = <p className='hover-caption'><img className='inline-icon' alt='heart-icon' src={require('../images/red-heart-icon.png')} />  {this.props.photo.likes_count}  <img className='inline-icon' alt='comment-icon' src={require('../images/comment-icon.png')}/> {this.props.photo.comment_count}</p>
+    let caption = <p className='hover-caption'><img className='hover-icon' alt='heart-icon' src={require('../images/red-heart-icon.png')} />  {this.props.photo.likes_count}  <img className='hover-icon' alt='comment-icon' src={require('../images/comment-icon.png')}/> {this.props.photo.comment_count}</p>
     return(
       <div className='indiv-photo'>
 
