@@ -43,6 +43,7 @@ class EditProfile extends React.Component {
   handleSubmit=(event)=>{
     event.preventDefault()
     this.props.updateUser(this.state)
+    this.props.history.push('/me')
   }
 
   render(){

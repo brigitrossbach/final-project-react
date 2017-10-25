@@ -1,3 +1,4 @@
+
 export function userFetched(user){
   return {
     type: 'USER_FETCHED',
