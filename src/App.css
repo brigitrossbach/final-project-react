@@ -241,8 +241,8 @@
   font-family: 'Montserrat';
 }
 
-.inline-icon img {
-  height: 15px;
+.inline-icon {
+  height: 10px;
   width: 15px;
 }
 
