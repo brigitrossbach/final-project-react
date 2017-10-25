@@ -237,6 +237,15 @@
   grid-row: 1;
 }
 
+.follow-button {
+  grid-row: 1;
+  grid-column: 7;
+  height: 30px;
+  width: 70px;
+  justify-self: center;
+  margin-top: 20px;
+}
+
 .detail-caption {
   font-family: 'Dosis Regular', sans-serif;
   font-size: 14px;

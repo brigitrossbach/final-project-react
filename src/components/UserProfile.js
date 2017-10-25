@@ -22,7 +22,6 @@ componentDidMount(){
 
   render(){
     if (this.props.user && this.props.currentUser){
-      let photoList= <ProfilePhotoList photos={this.props.user.photos} />
       let isFollowing
       for (let i=0; i<this.props.currentUser.all_following.length; i++) {
           if (this.props.currentUser.all_following[i].id === this.props.user.id) {
@@ -39,29 +38,39 @@ componentDidMount(){
       }
       let buttonFunction = () => {
         if (isFollowing){
-          return <button onClick={this.handleUnfollow}>Unfollow</button>
+          return <button className='follow-button' onClick={this.handleUnfollow}>Unfollow</button>
         } else if (ownProfile){
           return null
         } else {
-          return <button onClick={this.handleFollow}>Follow</button>
+          return <button className='follow-button' onClick={this.handleFollow}>Follow</button>
+        }
+      }
+      let bio
+      if (this.props.user.bio){
+        bio = <p className='profile-bio'>{this.props.currentUser.bio}</p>
+      } else {
+        bio = null
+      }
+      let followCaption
+      if (this.props.user.follower_count){
+        if (this.props.user.follower_count === 1){
+          followCaption = 'Follower'
+        } else {
+          followCaption = 'Followers'
         }
       }
       return(
-        <div className='user-profile-card'>
-        <div className='user-profile-username'>{this.props.user.username}</div>
-          <div className='user-name'>{this.props.user.first_name} {this.props.user.last_name}</div>
-        <div className='follower-info'>
-          <a>
-              {this.props.user.follower_count} Followers
-              <br />
-          </a>
-          <a>
-            {this.props.user.following_count} Following
-          </a>
-          <br />
-          {buttonFunction()}
-        </div>
-        {photoList}
+        <div>
+          <div className='profile-card'>
+            <h2 className='profile-username'>{this.props.user.username}</h2>
+            <p className='profile-name'>{this.props.user.first_name} {this.props.user.last_name}</p>
+            <p className='profile-photo-count'>{this.props.user.post_count} Posts</p>
+            <p className= 'profile-followers'>{this.props.user.follower_count} {followCaption}</p>
+            <p className='profile-following'>{this.props.user.following_count} Following</p>
+            {bio}
+            {buttonFunction()}
+          </div>
+          <ProfilePhotoList photos={this.props.user.photos} />
         </div>
       )
     } else {
