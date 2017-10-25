@@ -9,6 +9,7 @@ import UserProfile from './UserProfile'
 import { fetchCurrentUser } from '../actions/user_actions'
 import Waypoint from 'react-waypoint'
 import SelfProfile from './SelfProfile'
+import EditProfile from './EditProfile'
 
 class PhotoContainer extends React.Component {
 
@@ -61,6 +62,7 @@ class PhotoContainer extends React.Component {
             return <ProfilePhotoList photos={publicPhotos} {...props} />
           }}/>
           <Route exact path='/me' render={(props) => <SelfProfile photos={this.props.userPhotos.reverse()} {...props} />}/>
+          <Route path='/me/edit' render={(props) => <EditProfile {...props} currentUser={this.props.currentUser}/>} />
           <Route exact path='/photos/:tag' render={(props) => {
             let urlTag=props.match.params.tag
             let allPhotos=this.props.allPhotos

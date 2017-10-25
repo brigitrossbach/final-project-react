@@ -72,3 +72,19 @@ export function unfollowUser(user){
     .then(json => dispatch(userProfileFetched(json)))
   }
 }
+
+export function updateUser(user){
+return function(dispatch){
+  let newBody = JSON.stringify({user})
+  fetch(`http://localhost:3000/users/${user.user_id}`, {
+    method:"PATCH",
+    headers:{
+      "Accept":'application/json',
+      "Content-Type": "application/json"
+    },
+    body: newBody
+  })
+  .then(resp => resp.json())
+  .then(user => dispatch(userProfileFetched(user)))
+}
+}

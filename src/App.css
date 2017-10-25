@@ -222,19 +222,22 @@
   grid-row: 2;
 }
 
-.profile-post-count {
+.profile-photo-count {
   grid-column: 4;
   grid-row: 1;
+  margin-top: 20px;
 }
 
 .profile-following {
   grid-column: 6;
   grid-row: 1;
+  margin-top: 20px;
 }
 
 .profile-followers {
   grid-column: 5;
   grid-row: 1;
+  margin-top: 20px;
 }
 
 .follow-button {
@@ -263,6 +266,27 @@
   grid-column: 6;
   justify-self: left;
   font-family: 'Montserrat';
+}
+
+.edit-profile-button {
+  display: flex;
+  border: 2px solid #bbb;
+  justify-content: center;
+  align-items: center;
+  background-color: #dae1ed;
+  font: bold 14px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  height: 40px;
+  width: 70px;
 }
 
 .photo-username {

@@ -1,6 +1,8 @@
 import React from 'react'
 import ProfilePhotoList from './ProfilePhotoList'
 import { connect } from 'react-redux'
+import { Route, Link } from 'react-router-dom'
+import EditProfile from './EditProfile'
 
 class SelfProfile extends React.Component {
   render(){
@@ -24,6 +26,7 @@ class SelfProfile extends React.Component {
         <div className='profile-card'>
           <h2 className='profile-username'>{this.props.currentUser.username}</h2>
           <p className='profile-name'>{this.props.currentUser.first_name} {this.props.currentUser.last_name}</p>
+          <Link to='/me/edit' className='edit-profile-button' to='/me/edit'>Edit Profile</Link>
           <p className='profile-photo-count'>{this.props.currentUser.post_count} Posts</p>
           <p className= 'profile-followers'>{this.props.currentUser.follower_count} {followCaption}</p>
           <p className='profile-following'>{this.props.currentUser.following_count} Following</p>
