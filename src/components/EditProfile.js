@@ -46,6 +46,7 @@ class EditProfile extends React.Component {
   }
 
   render(){
+    if (this.props.currentUser){
       return(
         <div>
         <form className='form' onSubmit={this.handleSubmit}>
@@ -69,6 +70,12 @@ class EditProfile extends React.Component {
         </form>
       </div>
       )
+    } else {
+      return (
+        <div></div>
+      )
+    }
+
     }
 }
 

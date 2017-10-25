@@ -1,8 +1,7 @@
 import React from 'react'
 import ProfilePhotoList from './ProfilePhotoList'
 import { connect } from 'react-redux'
-import { Route, Link } from 'react-router-dom'
-import EditProfile from './EditProfile'
+import { Link } from 'react-router-dom'
 
 class SelfProfile extends React.Component {
   render(){
