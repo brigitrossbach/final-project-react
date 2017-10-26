@@ -487,3 +487,9 @@ button.send {
   width: 200px;
   margin-left: 50px;
 }
+
+.error-message {
+  background-color: red;
+  max-width: 150px;
+  margin-left: 43%;
+}

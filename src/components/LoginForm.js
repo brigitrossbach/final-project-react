@@ -31,6 +31,7 @@ class LoginForm extends React.Component{
       this.setState({
         currentError: 'User not found'
       })
+      console.log(this.state.currentError)
     }
   })
   .then(() => {
@@ -54,12 +55,19 @@ class LoginForm extends React.Component{
   }
 
   render(){
+    let error
+    if (this.state.currentError){
+      error = <p className='error-message'>{this.state.currentError}</p>
+    }
     return(
-      <form className='form' onSubmit={this.handleSubmit} >
-        <input type='text' value={this.state.username} placeholder='Username' onChange={this.handleUsernameChange} />
-        <input type='password' value={this.state.password} placeholder='Password' onChange={this.handlePasswordChange} />
-        <button type='submit' value='submit'>Log In</button>
-      </form>
+      <div>
+        {error}
+        <form className='form' onSubmit={this.handleSubmit} >
+          <input type='text' value={this.state.username} placeholder='Username' onChange={this.handleUsernameChange} />
+          <input type='password' value={this.state.password} placeholder='Password' onChange={this.handlePasswordChange} />
+          <button type='submit' value='submit'>Log In</button>
+        </form>
+      </div>
     )
   }
 
