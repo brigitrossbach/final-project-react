@@ -149,13 +149,14 @@ export function searchPhotos(searchTerm){
   }
 }
 
-export function deletePhoto(photo){
+export function deletePhoto(photo, props){
   return function(dispatch){
     fetch(`http://localhost:3000/photos/${photo.id}`, {
       method: 'delete'
     })
     .then(resp => resp.json())
     .then(photos => dispatch(userPhotosFetchSuccess(photos)))
+    .then(() => props.history.push('/me'))
   }
 }
 

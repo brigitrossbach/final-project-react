@@ -51,8 +51,7 @@ class PhotoDetail extends React.Component {
   }
 
   handleDeletePhoto = () => {
-    this.props.deletePhoto(this.props.photo)
-    this.props.history.push('/me')
+    this.props.deletePhoto(this.props.photo, this.props)
   }
 
   render(){
@@ -168,8 +167,8 @@ function mapDispatchToProps(dispatch){
     deleteComment: (comment) => {
       dispatch(deleteComment(comment))
     },
-    deletePhoto: (photo) => {
-      dispatch(deletePhoto(photo))
+    deletePhoto: (photo, props) => {
+      dispatch(deletePhoto(photo, props))
     }
   }
 }
