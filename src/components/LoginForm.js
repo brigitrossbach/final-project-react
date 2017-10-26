@@ -31,7 +31,6 @@ class LoginForm extends React.Component{
       this.setState({
         currentError: 'User not found'
       })
-      console.log(this.state.currentError)
     }
   })
   .then(() => {
