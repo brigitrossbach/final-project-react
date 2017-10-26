@@ -155,6 +155,30 @@ export function deletePhoto(photo){
       method: 'delete'
     })
     .then(resp => resp.json())
-    .then(photos =>userPhotosFetchSuccess(photos))
+    .then(photos => dispatch(userPhotosFetchSuccess(photos)))
+  }
+}
+
+export function fetchingPhoto(){
+  return{
+    type: 'FETCHING_PHOTO'
+  }
+}
+
+export function addPhoto(data, props) {
+  return function(dispatch){
+    dispatch(fetchingPhoto())
+    fetch('http://localhost:3000/photos', {
+      method: 'POST',
+      body: data,
+      headers: {
+        'Authorization': localStorage.getItem('jwt')
+      }
+    })
+    .then(resp => resp.json())
+    .then(json => {
+      dispatch(photoFetched(json))
+      props.history.push(`/photo/${json.id}`)
+    })
   }
 }

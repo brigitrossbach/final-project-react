@@ -13,6 +13,8 @@ function photoReducer(state={list: [], userPhotos: [], currentPhoto: {}, searchR
       return Object.assign({}, state, {currentPhoto: action.payload, isFetching:false})
     case 'SEARCH_RESULTS':
       return Object.assign({}, state, {searchResults: action.payload})
+      case 'FETCHING_PHOTO':
+        return Object.assign({}, state, { isFetching: true})
     default:
       return state
   }
