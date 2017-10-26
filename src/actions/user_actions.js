@@ -74,7 +74,7 @@ export function unfollowUser(user){
   }
 }
 
-export function updateUser(user){
+export function updateUser(user, props){
 return function(dispatch){
   let newBody = JSON.stringify({user})
   fetch(`http://localhost:3000/users/${user.user_id}`, {
@@ -87,5 +87,6 @@ return function(dispatch){
   })
   .then(resp => resp.json())
   .then(user => dispatch(userProfileFetched(user)))
+  .then(() => props.history.push('/me'))
 }
 }

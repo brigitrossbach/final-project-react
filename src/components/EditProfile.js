@@ -48,8 +48,7 @@ class EditProfile extends React.Component {
 
   handleSubmit=(event)=>{
     event.preventDefault()
-    this.props.updateUser(this.state)
-    this.props.history.push('/me')
+    this.props.updateUser(this.state, this.props)
   }
 
   render(){
@@ -93,8 +92,8 @@ class EditProfile extends React.Component {
 
 function mapDispatchToProps(dispatch){
   return {
-    updateUser: (user) => {
-      dispatch(updateUser(user))
+    updateUser: (user, props) => {
+      dispatch(updateUser(user, props))
     }
   }
 }
